@@ -10,7 +10,7 @@ CREATE TABLE users (
   avatar_url TEXT
 );
 
-DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS properties CASCADE;
 CREATE TABLE properties (
   id SERIAL PRIMARY KEY NOT NULL,
   owner_id INTEGER REFERENCES users(id),
@@ -31,14 +31,14 @@ CREATE TABLE properties (
   );
 
 DROP TABLE IF EXISTS images CASCADE;
-CREATE TABLE users (
+CREATE TABLE images (
   id SERIAL PRIMARY KEY NOT NULL,
   property_id INTEGER REFERENCES properties(id),
   image_url TEXT
 );
 
 DROP TABLE IF EXISTS reservations CASCADE;
-CREATE TABLE users (
+CREATE TABLE reservations (
   id SERIAL PRIMARY KEY NOT NULL,
   property_id INTEGER REFERENCES properties(id),
   user_id INTEGER REFERENCES users(id)
