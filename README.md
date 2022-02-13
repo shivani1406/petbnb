@@ -26,7 +26,8 @@ Update the .env file with your correct local information
   - username: `student` 
   - password: `student` 
   - database: `final-project`
-Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
+Run `npm install` or `yarn` to install the dependencies, Reset database: `npm run db:reset` , 
+ then `npm start` or `yarn start` to launch the server.
 
 In the browser, you can click on the button and see the data get loaded.
 
