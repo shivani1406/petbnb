@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS images CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   property_id INTEGER REFERENCES properties(id),
-  avatar_url TEXT
+  image_url TEXT
 );
 
 DROP TABLE IF EXISTS reservations CASCADE;
