@@ -16,6 +16,7 @@ CREATE TABLE properties (
   owner_id INTEGER REFERENCES users(id),
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
+  location VARCHAR(255),
   image TEXT,
   property_type VARCHAR(255) NOT NULL,
   check_in_time VARCHAR(255) NOT NULL,
