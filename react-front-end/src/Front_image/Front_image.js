@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; //optional
 import axios from 'axios';
+
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -30,8 +31,10 @@ return(<div className="main-page">
     <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
-        </button>  
+        </button> 
+        <a href="../MainPage/mainpage"> MainPage </a>
   </div>
+  
   );
   }
     
