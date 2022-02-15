@@ -67,3 +67,12 @@ nav {
 	float: right;
 	text-decoration: none;
 }
+
+.main-page{
+  margin-top: 150px;
+  background-image: url("https://blogs.cdc.gov/publichealthmatters/wp-content/uploads/sites/6/2020/05/golden_retiver_cat_cropped-1024x458.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  align-items: center;
+height: 600px;
+}
