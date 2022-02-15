@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './HomePage';
 import Navigation from './NavBar/NavBar';
 import MainPage from './MainPage/mainpage';
+import Footer from './Footer';
 class App extends Component {
   
 
@@ -15,9 +16,10 @@ class App extends Component {
         <BrowserRouter>
         <Switch>
            <Route exact path="/" component={HomePage} />
-           <Route path="/mainpage"> <MainPage /> </Route>
+           <Route path="/mainpage" component={MainPage} /> 
         </Switch>
         </BrowserRouter>
+        <Footer />
       </div>
     );
   }
