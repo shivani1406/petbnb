@@ -31,3 +31,39 @@
     transform: rotate(360deg);
   }
 }
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 90px;
+	background: #dee2f0;
+	padding: 1.5em 1.5em;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+}
+.imageLogo {
+  height:12vh;
+  width:10vw;
+  margin-right:0.5vw;
+}
+.nav--text {
+	float: left;
+	margin-left: 10px;
+	font-size: 1.5em;
+	font-family: "Bungee", cursive;
+	color: #fff;
+}
+
+.btn__text {
+	position: fixed;
+	top: 1.5em;
+	right: 2.5em;
+	cursor: pointer;
+	color: #fff;
+	float: right;
+	text-decoration: none;
+}
