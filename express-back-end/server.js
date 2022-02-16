@@ -41,6 +41,72 @@ App.get("/api/properties", (req, res) => {
     res.json(properties);
   });
 });
+App.post("/api/properties", (request, response) => {
+  // if (process.env.TEST_ERROR) {
+  //   setTimeout(() => response.status(500).json({}), 1000);
+  //   return;
+  // }
+
+  const name = request.body.name;
+  const description = request.body.description;
+  const location= request.body.location;
+  const image = request.body.image;
+  const property_type = request.body.property_type;
+  const check_in_time = request.body.check_in_time;
+  const check_out_time = request.body.check_out_time;
+  const price_per_night = request.body.price_per_night;
+  const room_size = request.body.room_size;
+  const meal_plan = request.body.meal_plan;
+  const pampering_session = request.body.pampering_session;
+  const vet_visit = request.body.vet_visit;
+  const daily_hairbrushing = request.body.daily_hairbrushing;
+  const for_cat = request.body.for_cat;
+  const for_dog = request.body.for_dog;
+  const owner_id = request.body.owner_id;
+
+  db.query(
+    `
+    INSERT INTO properties (name,
+      description,
+      location,
+      image,
+      property_type,
+      check_in_time,
+      check_out_time,
+      price_per_night,
+      room_size,
+      meal_plan,
+      pampering_session,
+      vet_visit,
+      daily_hairbrushing,
+      for_cat,
+      for_dog,
+      owner_id) VALUES ($1::text, $2::text, $3::text, $4::text, $5::text, $6::text, $7::text, $8::integer, $9::integer, $10::boolean, $11::boolean, $12::boolean, $13::boolean, $14::boolean, $15::boolean, $16::integer)
+  `,
+    [name,
+      description,
+      location,
+      image,
+      property_type,
+      check_in_time,
+      check_out_time,
+      price_per_night,
+      room_size,
+      meal_plan,
+      pampering_session,
+      vet_visit,
+      daily_hairbrushing,
+      for_cat,
+      for_dog, owner_id]
+  )
+    .then(() => {
+      setTimeout(() => {
+        response.status(204).json({});
+        // updateAppointment(Number(request.params.id), request.body.interview);
+      }, 1000);
+    })
+    .catch(error => console.log(error));
+});
 // App.use("/api", properties(db));
 // // Separated Routes for each Resource
 // const indexRoutes = require("./routes/index");
