@@ -2,7 +2,8 @@ import React, { Component } from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
 import PropertyList from '../components/property-list';
-
+import createProperty from '../create_property';
+import history from '../history';
 export default function admin(){
 
   const [query, setquery] = useState("");
@@ -51,7 +52,10 @@ export default function admin(){
         {proper}
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Create Property</button>
+      <div className="btn btn-primary">
+        <createProperty/>
+      </div>
+      <button type="button" class="btn btn-primary" onClick={() => history.push('/createProperty')} >Create Property</button>
     </div>
   );
 }
