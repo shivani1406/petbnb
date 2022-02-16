@@ -36,11 +36,12 @@ export default function mainpage(){
         key = {property.id}
         name = {property.name}
         avatar = {property.image}
+        description = {property.description}
         />
       );
     });
     return(
-    <div>
+    <div className="search_page">
       {/* <p>main page</p> */}
       <form className="app__searchForm" onSubmit={onSubmit}>
         <input

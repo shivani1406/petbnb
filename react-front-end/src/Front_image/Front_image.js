@@ -25,7 +25,7 @@ class Profile extends Component {
 return(<div className="main-page">
     <div className="main-page-image">
       <h1 className="main-page-title">PetBnB</h1>
-      <h3 className="main-page-description">Rent a place for your adorable pet. And have a peaceful vacation !</h3>
+      <h3 className="main-page-description">Rent a place for your adorable pet.<br/> And have a peaceful vacation !</h3>
       
     </div>
     <h1>{ this.state.message }</h1>
