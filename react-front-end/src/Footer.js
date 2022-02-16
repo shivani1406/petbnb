@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export class Footer extends Component {
   render() {
     return (
-      <footer style={{position: "absolute", bottom:0, width: "100%"}}>
+      <footer style={{position: "fixed", bottom:0, width: "100%",background: "#FFF1CE"}}>
         <div className="footer-copyright">
           <div className="container">
               © 2022 PetBnB
