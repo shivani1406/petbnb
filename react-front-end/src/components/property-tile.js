@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
 // import "./style.css";
 
-export default function PropertyTile({ property }) {
+export default function PropertyTile(props) {
   return (
-    property["property"]["image"].match(/\.(jpeg|jpg|gif|png)$/) != null && (
-      <div
+   
+<div
         className="propertyTile"
-        onClick={() => window.open(property["property"]["url"])}
+        onClick={() => window.open(props["property"]["url"])}
       >
-        <img className="propertyTile__img" src={property["property"]["image"]} />
+       
+        <img className="propertyTile__img" src={props.avatar} />
         <p className="propertyTile__name" >
-          {property["property"]["label"]}
+          {props.name}
         </p>
       </div>
-    )
+   
+      
+    
   );
 }
