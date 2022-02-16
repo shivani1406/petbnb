@@ -7,11 +7,13 @@ const BodyParser = require('body-parser');
 const PORT = 8080;
 const morgan = require("morgan");
 const cookieSession = require('cookie-session');
+var cors = require('cors');
+App.use(cors()) 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
-
+// App.use(Express.static(__dirname + '/public'));
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -28,17 +30,28 @@ App.use(cookieSession({
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
+App.get("/api/properties", (req, res) => {
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties;
+  `
+  ).then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
+// App.use("/api", properties(db));
+// // Separated Routes for each Resource
+// const indexRoutes = require("./routes/index");
+// const propertiesRoutes = require("./routes/properties");
+// const imagesRoutes = require("./routes/images");
+// const reservationsRoutes = require("./routes/reservations");
 
-// Separated Routes for each Resource
-const indexRoutes = require("./routes/index");
-const propertiesRoutes = require("./routes/properties");
-const imagesRoutes = require("./routes/images");
-const reservationsRoutes = require("./routes/reservations");
-
-indexRoutes(db,App);
-propertiesRoutes(db,App);
-imagesRoutes(db, App);
-reservationsRoutes(db,App);
+// indexRoutes(db,App);
+// propertiesRoutes(db,App);
+// imagesRoutes(db, App);
+// reservationsRoutes(db,App);
 
 
 App.listen(PORT, () => {
