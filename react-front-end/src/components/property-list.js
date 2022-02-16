@@ -6,7 +6,7 @@ export default function PropertyList(props) {
    
 
        <tr>
-       <td> <img className="propertyTile__img" src={props.avatar} /></td>
+       <td> <img className="property__img " src={props.avatar} /></td>
          <td>{props.name}
          <p>{props.description}</p></td>
         
