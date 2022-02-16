@@ -32,7 +32,8 @@ return(<div className="main-page">
         <button onClick={this.fetchData} >
           Fetch Data
         </button> 
-        <a href="../MainPage/mainpage"> MainPage </a>
+        <a href="../mainpage"> MainPage </a>
+        <a href="../admin"> AdminPage </a>
   </div>
   
   );

@@ -149,3 +149,7 @@ height: 450px;
   grid-template-columns: 220px 220px;
   align-items: baseline;
 }
+
+.app__admin {
+  margin-top: 95px;
+}
