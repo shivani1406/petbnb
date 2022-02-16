@@ -52,9 +52,7 @@ export default function admin(){
         {proper}
         </tbody>
       </table>
-      <div className="btn btn-primary">
-        <createProperty/>
-      </div>
+      
       <button type="button" class="btn btn-primary" onClick={() => history.push('/createProperty')} >Create Property</button>
     </div>
   );
