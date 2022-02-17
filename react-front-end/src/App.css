@@ -240,9 +240,84 @@ td button{
   margin-left: 15px;
 }
 .app__createproperty{
-  margin-top: 95px;
-  margin-bottom: 80px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+  /* max-width: 700px; */
+  width: 100%;
+  background: #FFFFFF;
+  padding: 25px 30px;
+  border-radius: 5px;
 }
+.createproperty_title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.createproperty_title::before{
+  content: '';
+  position: absolute;
+  left: 40;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background: #282c34;
+}
+.property_form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.input_box{
+  width: calc(100% / 2 - 20px);
+}
+.input_box .details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.input_box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.input_box input:focus,
+.input_box input:valid{
+  border-color: #6a7199;
+}
+.pet-form-species-container{
+  display: flex;
+}
+.input_box select{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+}
+.form_button{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border-radius: none;
+  font-size: 18px;
+  font-weight: 500;
+  background: #6a7199;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+.form_button:hover{
+  background: #4a5594;
+}
+
 
 .search_page{
   background: #eee5e9;
@@ -258,5 +333,12 @@ td button{
 @media(max-width: 500px){
   .app__properties {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .app__createproperty{
+    max-width: 100%;
+  }
+  .input_box{
+    margin-bottom: 15px;
+    width: 100%;
   }
 }
