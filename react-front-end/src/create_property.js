@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
+// import Popup from 'react-popup';
 
 
 // export default function createProperty(){
@@ -120,7 +121,7 @@ onSubmit(e) {
   const baseUrl = 'http://localhost:8080';
   axios.post(`${baseUrl}/api/properties`, userObject)
       .then((res) => {
-          console.log(res.data)
+        // Popup.alert('Successfully Created Property');
       }).catch((error) => {
           console.log(error)
       });
@@ -145,82 +146,104 @@ onSubmit(e) {
     render (){
   return (
     <div className="app__createproperty">
-      <h2>Create Property</h2>
-      <form  onSubmit={this.onSubmit}>
+      <h2 className="createproperty_title">Create Property</h2>
+      <form  onSubmit={this.onSubmit} className="property_form">
+        <div className="input_box">
+          <span className="details">Property Name</span>
           <input
             type="text"
             value={this.state.name} onChange={this.onChangeUserName}
             className="pet-form-name-input"
-            placeholder="Name"/>
-
+            placeholder="Name" required/>
+        </div>
           <br/>
-
+          <div className="input_box">
+          <span className="details">Property Description</span>
           <input
             type="text"
             value={this.state.description}
             onChange={this.onChangeDescription}
             className="pet-form-name-input"
-            placeholder="Description"/>
+            placeholder="Description" required/>
 
           <br/>
-
+</div>
+<div className="input_box">
+<span className="details">Property Location</span>
           <input
             type="text"
             value={this.state.location}
             onChange={this.onChangeLocation}
             className="pet-form-name-input"
-            placeholder="Location"/>
+            placeholder="Location" required/>
 
           <br/>
-
-         
-            <input type="text" onChange={this.onChangeImage} className="pet-form-img" placeholder="Enter file url"/>
+</div>
+<div className="input_box">
+<span className="details">Property Image</span>
+            <input type="text" onChange={this.onChangeImage} className="pet-form-img" placeholder="Enter file url" required/>
             <img src={this.state.image} className="propertyTile__img" />
           
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Property Type</span>
           <input
             type="text"
             value={this.state.property_type}
             onChange={this.onChangePropertyType}
             className="pet-form-name-input"
-            placeholder="Property Type"/>
+            placeholder="Property Type" required/>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Check in Time</span>
           <input
             type="text"
             value={this.state.check_in_time}
             onChange={this.onChangeCheckintime}
             className="pet-form-name-input"
-            placeholder="Check-in time"/>
+            placeholder="Check-in time" required/>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Check out Time</span>
           <input
             type="text"
             value={this.state.check_out_time}
             onChange={this.onChangeCheckouttime}
             className="pet-form-name-input"
-            placeholder="Check-out time"/>
+            placeholder="Check-out time" required/>
 
           <br/>
-
+</div>
+<div className="input_box">
+<span className="details">Price per night</span>
           <input
             type="text"
             value={this.state.price_per_night}
             onChange={this.onChangePricepernight}
             className="pet-form-name-input"
-            placeholder="Price per night"/>
+            placeholder="Price per night" required/>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Size of the Room</span>
           <input
             type="text"
             value={this.state.room_size}
             onChange={this.onChangeRoomsize}
             className="pet-form-name-input"
-            placeholder="Room size"/>
+            placeholder="Room size" required/>
 
           <br/>
-
+</div>
+<div className="input_box">
+<span className="details">Is there a meal plan ?</span>
           <select  className="pet-form-species-container" onChange={this.onChangeMealplan}>
             <option value="" disabled="disabled" selected="selected">Is there a meal plan?</option>
             <option value="true">Yes</option>
@@ -228,6 +251,9 @@ onSubmit(e) {
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Is there a pampering session ?</span>
           <select className="pet-form-species-container" onChange={this.onChangePamperingsession}>
             <option value="" disabled="disabled" selected="selected">Is there a pampering session?</option>
             <option value="true">Yes</option>
@@ -235,13 +261,19 @@ onSubmit(e) {
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Are there vet visits ?</span>
           <select  className="pet-form-species-container" onChange={this.onChangeVetvisit}>
-            <option value="" disabled="disabled" selected="selected">Are there a vet visits?</option>
+            <option value="" disabled="disabled" selected="selected">Are there vet visits?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Is there daily hairbrushing ?</span>
           <select className="pet-form-species-container" onChange={this.onChangeDailyhairbrushing}>
             <option value="" disabled="disabled" selected="selected">Is there a daily hairbrushing?</option>
             <option value="true">Yes</option>
@@ -249,6 +281,9 @@ onSubmit(e) {
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Is it for cats?</span>
           <select className="pet-form-species-container" onChange={this.onChangeforcats}>
             <option value="" disabled="disabled" selected="selected">Is it for cats?</option>
             <option value="true">Yes</option>
@@ -256,6 +291,9 @@ onSubmit(e) {
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Is it for dogs?</span>
           <select  className="pet-form-species-container" onChange={this.onChangefordogs}>
             <option value="" disabled="disabled" selected="selected">Is it for dogs?</option>
             <option value="true">Yes</option>
@@ -263,10 +301,11 @@ onSubmit(e) {
           </select>
 
           <br/>
-
-          <input type="submit" value="Create Property" className="btn btn-success " />
+</div>
+          <input type="submit" value="Create Property" className="form_button" />
+        
         </form>
-        <button className="pet-form-cancel" onClick={this.handleCancel}>Cancel</button>
+        {/* <button className="form_button_cancle" onClick={this.handleCancel}>Cancel</button> */}
     </div>
   );
 }

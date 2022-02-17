@@ -40,7 +40,7 @@ export default function admin(){
     });
   return (
     <div className="app__admin">
-      <table class="table">
+      <table class="table" >
       <thead>
         <tr>
         <th>Image</th>
