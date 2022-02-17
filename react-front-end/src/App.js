@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route, Switch, BrowserRouter} from "react-router-dom";
 import './App.css';
@@ -7,7 +8,9 @@ import MainPage from './MainPage/mainpage';
 import admin from './Admin/admin';
 import createProperty from './create_property';
 import Footer from './Footer';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import history from './history';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from "./components/navbar.component";
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
@@ -19,9 +22,8 @@ function App (){
       
       <div className="App">
         
+        <BrowserRouter history={history}>
         
-        
-        <BrowserRouter>
         <Nav/>
         <Switch>
            <Route exact path="/" component={HomePage} />
