@@ -8,6 +8,10 @@ import axios from 'axios';
     const [query, setquery] = useState("");
     const [properties, setproperties] = useState([]);
 
+   const inputChangedHandler = (event) => {
+      const updatedName = event.target.value;
+      // May be call for search result
+  }
   
   const baseUrl = 'http://localhost:8080';
   const getPropertyInfo = (id) => {
@@ -23,19 +27,19 @@ import axios from 'axios';
   useEffect(() => {
     getPropertyInfo(`${id}`);
   }, []);
-// const userObject = {
-//   name: properties.name
-//   };
-  // const handleUpdate = (id) => {
-  //   axios.put(`${baseUrl}/api/properties/${id}`,userObject) 
-  // .then((response) => {
-  //   console.log(response.data) 
+const userObject = {
+  name: properties.name
+  };
+  const handleUpdate = (id) => {
+    axios.put(`${baseUrl}/api/properties/${id}`,userObject) 
+  .then((response) => {
+    console.log(response.data) 
 
-  //   setproperties(
-  //   response.data
-  //   );
-  // }) 
-  // }
+    setproperties(
+    response.data
+    );
+  }) 
+  }
 
 const proper = properties.map((property) => {
  return( <div className="input_box">
@@ -46,6 +50,7 @@ const proper = properties.map((property) => {
     value={property.name}
     className="pet-form-name-input"
     placeholder="Name" 
+    onChange={(event)=>inputChangedHandler(event)}
     required/>
 </div>);
   
@@ -64,7 +69,7 @@ const handleDelete = (id) => {
        {proper}
           
         </form>
-        {/* <button className="form_button_cancle" onClick={handleUpdate(`${id}`)}>Update</button>  */}
+        <button className="form_button_cancle" onClick={event => handleUpdate(`${id}`)}>Update</button> 
         <button onClick={event => handleDelete(`${id}`)}>Delete</button>
     </div>
   );
