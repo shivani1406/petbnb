@@ -40,7 +40,7 @@ export default function admin(){
     });
   return (
     <div className="app__admin">
-      <table class="table" >
+      <table className="table" >
       <thead>
         <tr>
         <th>Image</th>
@@ -53,7 +53,7 @@ export default function admin(){
         </tbody>
       </table>
       
-      <button type="button" class="btn btn-primary" onClick={() => history.push('/createProperty')} >Create Property</button>
+      <button type="button" className="btn btn-primary" onClick={() => history.push('/createProperty')} >Create Property</button>
     </div>
   );
 }

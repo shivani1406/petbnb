@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Route, Switch, BrowserRouter} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import './App.css';
 import HomePage from './HomePage';
 import Navigation from './NavBar/NavBar';
@@ -10,21 +9,21 @@ import createProperty from './create_property';
 import Footer from './Footer';
 import history from './history';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Nav from "./components/navbar.component";
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
-function App (){
+class App extends Component {
   
 
-   
+  render() {
     return (
       
       <div className="App">
         
         <BrowserRouter history={history}>
-        
         <Nav/>
+
         <Switch>
            <Route exact path="/" component={HomePage} />
            <Route exact path="/login" component={Login} /> 
@@ -34,12 +33,10 @@ function App (){
            <Route path="/createProperty" component={createProperty} /> 
         </Switch>
         </BrowserRouter>
-      
         <Footer />
       </div>
-    
     );
   }
-
+}
 
 export default App;
