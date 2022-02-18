@@ -13,7 +13,7 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS properties CASCADE;
 CREATE TABLE properties (
   id SERIAL PRIMARY KEY NOT NULL,
-  owner_id INTEGER REFERENCES users(id),
+  owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   location VARCHAR(255),
@@ -34,13 +34,13 @@ CREATE TABLE properties (
 DROP TABLE IF EXISTS images CASCADE;
 CREATE TABLE images (
   id SERIAL PRIMARY KEY NOT NULL,
-  property_id INTEGER REFERENCES properties(id),
+  property_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
   image_url TEXT
 );
 
 DROP TABLE IF EXISTS reservations CASCADE;
 CREATE TABLE reservations (
   id SERIAL PRIMARY KEY NOT NULL,
-  property_id INTEGER REFERENCES properties(id),
-  user_id INTEGER REFERENCES users(id)
+  property_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
