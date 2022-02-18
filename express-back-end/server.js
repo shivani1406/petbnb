@@ -41,6 +41,26 @@ App.get("/api/properties", (req, res) => {
     res.json(properties);
   });
 });
+App.put("/api/properties/:id", (req, res) => {
+  db.query(
+    `
+    UPDATE TABLE properties
+    SET name = $2
+    WHERE id = $1::integer;`, [req.params.id, req.body.name])
+    .then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
+App.get("/api/properties/:id", (req, res) => {
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties WHERE id = $1::integer;`, [req.params.id])
+    .then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
 App.post("/api/properties", (request, response) => {
   // if (process.env.TEST_ERROR) {
   //   setTimeout(() => response.status(500).json({}), 1000);
@@ -106,6 +126,17 @@ App.post("/api/properties", (request, response) => {
       }, 1000);
     })
     .catch(error => console.log(error));
+});
+
+App.delete("/api/properties", (request, response) => {
+
+  db.query(`DELETE FROM properties WHERE id = $1::integer`, [
+    request.body.id
+  ]).then(() => {
+    setTimeout(() => {
+      // response.status(204).json({});
+  }); })
+  .catch(error => console.log(error));
 });
 // App.use("/api", properties(db));
 // // Separated Routes for each Resource
