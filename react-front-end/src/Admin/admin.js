@@ -4,6 +4,7 @@ import axios from 'axios';
 import PropertyList from '../components/property-list';
 import createProperty from '../create_property';
 import history from '../history';
+import { Link } from "react-router-dom";
 export default function admin(){
 
   const [query, setquery] = useState("");
@@ -21,21 +22,20 @@ export default function admin(){
         );
       }) 
     }
-    // const onSubmit = (e) => {
-    //   e.preventDefault();
-    //   getPropertyInfo();
-    // };
+    
     useEffect(() => {
       getPropertyInfo();
     }, []);
+    
     const proper = properties.map((property) => {
       return (
-        <PropertyList
+        <Link to={`/propertyPage/${property.id}`} activeClassName="current">
+          <PropertyList
         key = {property.id}
         name = {property.name}
         description = {property.description}
         avatar = {property.image}
-        />
+        /></Link>
       );
     });
   return (

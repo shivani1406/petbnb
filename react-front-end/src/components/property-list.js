@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 // import "./style.css";
 
 export default function PropertyList(props) {
   return (
    
 
-       <tr>
+    <tr>
        <td> <img className="property__img " src={props.avatar} /></td>
          <td>{props.name}
          <p>{props.description}</p></td>
@@ -14,7 +15,6 @@ export default function PropertyList(props) {
          <button type="button" className="btn btn-danger">Delete</button>
          </td>
        </tr>
-    
       
     
   );
