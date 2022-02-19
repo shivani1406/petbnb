@@ -7,6 +7,7 @@ export default function mainpage(){
 
   
     const [searchquery, setSearch] = useState("");
+    const [query, setquery] = useState("");
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
     // const getPropertyInfo = async () => {
@@ -14,6 +15,11 @@ export default function mainpage(){
     //   setproperties(result.data.hits);
     //   console.log(result.data.hits);
     // };
+
+    useEffect(() => {
+        getPropertyInfo();
+    }, []);
+
    const getPropertyInfo = () => {
       axios.get(`${baseUrl}/api/properties`) // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
@@ -53,6 +59,7 @@ export default function mainpage(){
       return (
         <PropertyTile
         key = {property.id}
+        id = {property.id}
         name = {property.name}
         avatar = {property.image}
         description = {property.description}
