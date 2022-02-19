@@ -1,47 +1,46 @@
-
-import React from 'react';
-import { Route, Switch, BrowserRouter} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import './App.css';
 import HomePage from './HomePage';
 import Navigation from './NavBar/NavBar';
 import MainPage from './MainPage/mainpage';
-import admin from './Admin/admin';
-import createProperty from './create_property';
-import propertyDetails from './property_details';
+import PropertyDetails from './property_details';
+import Admin from './Admin/admin';
+import CreateProperty from './create_property';
 import Footer from './Footer';
 import history from './history';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Nav from "./components/navbar.component";
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
-function App (){
+import PropertyPage from './components/propertyPage';
+class App extends Component {
   
 
-   
+  render() {
     return (
       
       <div className="App">
         
         <BrowserRouter history={history}>
-        
         <Nav/>
-        <Switch>
-           <Route exact path="/" component={HomePage} />
-           <Route exact path="/login" component={Login} /> 
-           <Route exact path="/register" component={SignUp} /> 
-           <Route path="/mainpage" component={MainPage} /> 
-           <Route path="/admin" component={admin} /> 
-           <Route path="/createProperty" component={createProperty} /> 
-           <Route path="/propertyDetails/:id" component={propertyDetails} /> 
-        </Switch>
+
+        <Routes>
+           <Route exact path="/" element={<HomePage/>} />
+           <Route exact path="/login" element={<Login/>} /> 
+           <Route exact path="/register" element={<SignUp/>} /> 
+           <Route path="/mainpage" element={<MainPage/>} /> 
+           <Route path="/admin" element={<Admin/>} /> 
+           <Route path="/createProperty" element={<CreateProperty/>} /> 
+           <Route path="/propertyPage/:id" element={<PropertyPage/>} />
+           <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
+        </Routes>
         </BrowserRouter>
-      
         <Footer />
       </div>
-    
     );
   }
-
+}
 
 export default App;

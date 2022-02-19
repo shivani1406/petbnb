@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-const propertyDetails = () => {
+const PropertyDetails = () => {
   
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
@@ -35,4 +35,4 @@ const getPropertyDetails = () => {
   );
 }
 
-export default propertyDetails;
+export default PropertyDetails;

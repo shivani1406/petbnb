@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 // export default function createProperty(){
-  class createProperty extends Component {
+  class CreateProperty extends Component {
     constructor(props) {
       super(props)
 
@@ -312,4 +312,4 @@ onSubmit(e) {
 }
 
 
-export default createProperty;
+export default CreateProperty;
