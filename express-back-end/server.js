@@ -35,13 +35,27 @@ App.get("/api/properties", (req, res) => {
     `
     SELECT
       * 
-    FROM properties;
-  `
+    FROM properties
+    ;
+  `,
   ).then(({ rows: properties }) => {
     res.json(properties);
   });
 });
-
+App.get("/api/search", (req, res) => {
+  const search = req.body.searchquery;
+  console.log(req.body.searchquery);
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties
+    WHERE location = $1::text;
+  `,[search]
+  ).then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
 
 App.put("/api/properties/:id", (req, res) => {
   const name = req.body.name;
