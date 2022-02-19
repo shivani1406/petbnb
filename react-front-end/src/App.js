@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import React, { Component, useState } from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import HomePage from './HomePage';
-import Navigation from './NavBar/NavBar';
 import MainPage from './MainPage/mainpage';
 import PropertyDetails from './property_details';
 import Admin from './Admin/admin';
@@ -17,27 +16,25 @@ import SignUp from './components/signup.component';
 import PropertyPage from './components/propertyPage';
 import AdminBookings from './components/adminBookings';
 class App extends Component {
-  
 
   render() {
     return (
-      
       <div className="App">
-        
-        <BrowserRouter history={history}>
-        <Nav/>
 
-        <Routes>
-           <Route exact path="/" element={<HomePage/>} />
-           <Route exact path="/login" element={<Login/>} /> 
-           <Route exact path="/register" element={<SignUp/>} /> 
-           <Route path="/mainpage" element={<MainPage/>} /> 
-           <Route path="/admin" element={<Admin/>} /> 
-           <Route path="/createProperty" element={<CreateProperty/>} /> 
-           <Route path="/propertyPage/:id" element={<PropertyPage/>} />
-           <Route path="/adminBookings" element={<AdminBookings/>} />
-           <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
-        </Routes>
+        <BrowserRouter history={history}>
+          <Nav />
+
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<SignUp />} />
+            <Route path="/mainpage" element={<MainPage />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/createProperty" element={<CreateProperty />} />
+            <Route path="/propertyPage/:id" element={<PropertyPage />} />
+            <Route path="/adminBookings" element={<AdminBookings />} />
+            <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
+          </Routes>
         </BrowserRouter>
         <Footer />
       </div>

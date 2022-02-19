@@ -1,25 +1,44 @@
-import React, {Component} from "react";
+import axios from "axios";
+import React, { Component, useContext } from "react";
 import { Link } from "react-router-dom";
 import imageLogo from '../images/petbnb.png';
 
 export default class Nav extends Component {
-     render(){
-         return(
-            <nav className="navbar navbar-expand navbar-light fixed-top">
-            <div className="container">
-            <Link to={'/'} className="nav-link"><img className="imageLogo" src={imageLogo} alt="logologologo"></img></Link>
-              <div className="collapse navbar-collapse">
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                    <Link to={'/login'} className="nav-link">Login</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to={"/register"} className="nav-link">Sign up</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            </nav>   
-         )
-     } 
+
+
+
+  render() {
+
+    let buttons;
+    if(this.props.user){
+
+      buttons = (<ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={'/login'} className="nav-link">Logout</Link>
+              </li>
+            </ul>)
+
+    }else {
+
+      buttons = (<ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={'/login'} className="nav-link">Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/register"} className="nav-link">Sign up</Link>
+              </li>
+            </ul>)
+    }
+
+    return (
+      <nav className="navbar navbar-expand navbar-light fixed-top">
+        <div className="container">
+          <Link to={'/'} className="nav-link"><img className="imageLogo" src={imageLogo} alt="logologologo"></img></Link>
+          <div className="collapse navbar-collapse">
+            {buttons}
+          </div>
+        </div>
+      </nav>
+    )
+  }
 }
