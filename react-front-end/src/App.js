@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './HomePage';
 import Navigation from './NavBar/NavBar';
 import MainPage from './MainPage/mainpage';
+import PropertyDetails from './property_details';
 import Admin from './Admin/admin';
 import CreateProperty from './create_property';
 import Footer from './Footer';
@@ -14,6 +15,7 @@ import Nav from "./components/navbar.component";
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
 import PropertyPage from './components/propertyPage';
+import AdminBookings from './components/adminBookings';
 class App extends Component {
   
 
@@ -33,6 +35,8 @@ class App extends Component {
            <Route path="/admin" element={<Admin/>} /> 
            <Route path="/createProperty" element={<CreateProperty/>} /> 
            <Route path="/propertyPage/:id" element={<PropertyPage/>} />
+           <Route path="/adminBookings" element={<AdminBookings/>} />
+           <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
         </Routes>
         </BrowserRouter>
         <Footer />

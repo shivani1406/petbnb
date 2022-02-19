@@ -63,7 +63,7 @@ export default function admin(){
         </tbody>
       </table>
       
-      <button type="button" className="btn btn-primary" onClick={() => history.push('/createProperty')} >Create Property</button>
+      <button type="button" className="btn btn-primary" ><Link to={`/createProperty`} activeClassName="current">Create Property</Link></button>
     </div>
   );
 }

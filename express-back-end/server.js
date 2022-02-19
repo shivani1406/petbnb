@@ -33,18 +33,33 @@ App.use(cookieSession({
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
+
 App.get("/api/properties", (req, res) => {
   db.query(
     `
     SELECT
       * 
-    FROM properties;
-  `
+    FROM properties
+    ;
+  `,
   ).then(({ rows: properties }) => {
     res.json(properties);
   });
 });
-
+App.get("/api/search", (req, res) => {
+  const search = req.body.searchquery;
+  console.log(req.body.searchquery);
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties
+    WHERE location = $1::text;
+  `,[search]
+  ).then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
 
 App.put("/api/properties/:id", (req, res) => {
   const name = req.body.name;
