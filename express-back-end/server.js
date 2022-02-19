@@ -173,6 +173,22 @@ App.delete("/api/properties/:id", (request, response) => {
      })
   .catch(error => console.log(error));
 });
+
+App.get("/api/reservations", (req, res) => {
+  db.query(
+    `
+    SELECT
+      property_id,
+      users.name as user_name, properties.name as property_name,
+      description, image 
+    FROM reservations JOIN properties ON
+    property_id = properties.id
+    JOIN users ON user_id = users.id ;`)
+    .then(({ rows: reservations }) => {
+    res.json(reservations);
+  });
+});
+
 // App.use("/api", properties(db));
 // // Separated Routes for each Resource
 // const indexRoutes = require("./routes/index");
