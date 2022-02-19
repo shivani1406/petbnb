@@ -17,6 +17,9 @@ App.use(Express.static('public'));
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
+const { request, response } = require("express");
+const e = require("express");
+const { resolveInclude } = require("ejs");
 const db = new Pool(dbParams);
 // console.log(db);
 db.connect();
@@ -170,6 +173,21 @@ App.delete("/api/properties/:id", (request, response) => {
 // propertiesRoutes(db,App);
 // imagesRoutes(db, App);
 // reservationsRoutes(db,App);
+
+
+
+App.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  console.log(email);
+  db.query(`SELECT email, password FROM USERS WHERE EMAIL = $1`, [email])
+  .then(data => {
+    if(data.rows[0]["password"]=== password) {
+    res.send(data.rows[0]["email"]);
+    } else {
+      res.send("invalid user");
+    }
+    })
+})
 
 
 App.listen(PORT, () => {
