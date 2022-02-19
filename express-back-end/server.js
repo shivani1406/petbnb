@@ -30,6 +30,7 @@ App.use(cookieSession({
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
+
 App.get("/api/properties", (req, res) => {
   db.query(
     `
@@ -41,6 +42,24 @@ App.get("/api/properties", (req, res) => {
     res.json(properties);
   });
 });
+
+App.get("/api/properties/:id", (req, res) => {
+  
+  const id = req.params.id;
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties
+     
+    WHERE id = ${id};
+  `
+  ).then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
+
+
 App.post("/api/properties", (request, response) => {
   // if (process.env.TEST_ERROR) {
   //   setTimeout(() => response.status(500).json({}), 1000);

@@ -7,6 +7,7 @@ import Navigation from './NavBar/NavBar';
 import MainPage from './MainPage/mainpage';
 import admin from './Admin/admin';
 import createProperty from './create_property';
+import propertyDetails from './property_details';
 import Footer from './Footer';
 import history from './history';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -32,6 +33,7 @@ function App (){
            <Route path="/mainpage" component={MainPage} /> 
            <Route path="/admin" component={admin} /> 
            <Route path="/createProperty" component={createProperty} /> 
+           <Route path="/propertyDetails/:id" component={propertyDetails} /> 
         </Switch>
         </BrowserRouter>
       

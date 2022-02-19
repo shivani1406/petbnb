@@ -1,11 +1,12 @@
 import React, { Component } from 'react'; //optional
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import PropertyTile from '../components/property-tile';
 
 export default function mainpage(){
 
   
+    
     const [query, setquery] = useState("");
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
@@ -14,6 +15,11 @@ export default function mainpage(){
     //   setproperties(result.data.hits);
     //   console.log(result.data.hits);
     // };
+
+    useEffect(() => {
+        getPropertyInfo();
+    }, []);
+
    const getPropertyInfo = () => {
       axios.get(`${baseUrl}/api/properties`) // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
@@ -34,6 +40,7 @@ export default function mainpage(){
       return (
         <PropertyTile
         key = {property.id}
+        id = {property.id}
         name = {property.name}
         avatar = {property.image}
         description = {property.description}
