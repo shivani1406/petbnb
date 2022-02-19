@@ -30,6 +30,7 @@ App.use(cookieSession({
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
+
 App.get("/api/properties", (req, res) => {
   db.query(
     `
