@@ -87,38 +87,67 @@ function PropertyPage(){
     <div className="app__createproperty">
       <h1>Update Property Details </h1>
         
-      <div>
+      <div className="property_form">
+      <div className="input_box">
+          <span className="details">Property Name</span>
       <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <input type="text" value={description} onChange={(e)=>{setDescription(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <input type="text" value={location} onChange={(e)=>{setLocation(e.target.value)}} /> <br /><br />
-        <br /><br />
+      </div>
+          <br/>
+          <div className="input_box">
+          <span className="details">Property Description</span>
+        <input type="text" value={description} onChange={(e)=>{setDescription(e.target.value)}} /> <br/>
+</div>
+<div className="input_box">
+<span className="details">Property Location</span>
+        <input type="text" value={location} onChange={(e)=>{setLocation(e.target.value)}} /> <br /><br/>
+</div>
+<div className="input_box">
+<span className="details">Property Image</span>
         <input type="text" value={image} onChange={(e)=>{setImage(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <input type="text" value={property_type} onChange={(e)=>{setPropertyType(e.target.value)}} /> <br /><br />
-         <br /><br />
-        <input type="text" value={check_in_time} onChange={(e)=>{setCheckInTime(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <input type="text" value={check_out_time} onChange={(e)=>{setCheckOutTime(e.target.value)}} /> <br /><br />
-        <input type="text" value={price_per_night} onChange={(e)=>{setPricePerNight(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <input type="text" value={room_size} onChange={(e)=>{setRoomSize(e.target.value)}} /> <br /><br />
-        <br /><br />
-        <span className="details">Is there a meal plan ?</span>
+        <img src={image} className="propertyTile__img" />
+          
+
+          <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Property Type</span>
+        <input type="text" value={property_type} onChange={(e)=>{setPropertyType(e.target.value)}} /> <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Check in Time</span>
+        <input type="text" value={check_in_time} onChange={(e)=>{setCheckInTime(e.target.value)}} /> <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Check out Time</span>
+        <input type="text" value={check_out_time} onChange={(e)=>{setCheckOutTime(e.target.value)}} /> <br/>
+</div>
+<div className="input_box">
+<span className="details">Price per night</span>
+        <input type="text" value={price_per_night} onChange={(e)=>{setPricePerNight(e.target.value)}} /> <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Size of the Room</span>
+        <input type="text" value={room_size} onChange={(e)=>{setRoomSize(e.target.value)}} /> <br/>
+</div>
+<div className="input_box">
+<span className="details">Is there a meal plan ?</span>
           <select  className="pet-form-species-container" onChange={(e)=>{setMealPlan(e.target.value)}}>
             <option value="" disabled="disabled" selected="selected">Is there a meal plan?</option>
             <option value={stringToBoolean("true")}>Yes</option>
             <option value={stringToBoolean("false")}>No</option>
           </select>
-        <br /><br />
-        <span className="details">Is there a pampering session ?</span>
+          <br/>
+          </div>
+          <div className="input_box">
+          <span className="details">Is there a pampering session ?</span>
         <select className="pet-form-species-container" onChange={(e)=>{setPamperingSession(e.target.value)}}>
             <option value="" disabled="disabled" selected="selected">Is there a pampering session?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
-          <br />
+          <br/>
+          </div>
+          <div className="input_box">
           <span className="details">Are there vet visits ?</span>
           <select  className="pet-form-species-container" onChange={(e)=>{setVetVisit(e.target.value)}}>
             <option value="" disabled="disabled"selected="selected" >Are there vet visits?</option>
@@ -126,7 +155,9 @@ function PropertyPage(){
             <option value="false">No</option>
           </select>
 
-          <br/><br />
+          <br/>
+          </div>
+          <div className="input_box">
           <span className="details">Is there daily hairbrushing ?</span>
           <select className="pet-form-species-container" onChange={(e)=>{setDailyHairBrushing(e.target.value)}}>
             <option value="" disabled="disabled" selected="selected">Is there a daily hairbrushing?</option>
@@ -135,6 +166,8 @@ function PropertyPage(){
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
           <span className="details">Is it for cats?</span>
           <select className="pet-form-species-container" onChange={(e)=>{setForCat(e.target.value)}}>
             <option value="" disabled="disabled" selected="selected">Is it for cats?</option>
@@ -143,6 +176,8 @@ function PropertyPage(){
           </select>
 
           <br/>
+          </div>
+          <div className="input_box">
           <span className="details">Is it for dogs?</span>
           <select  className="pet-form-species-container" onChange={(e)=>{setForDog(e.target.value)}}>
             <option value="" disabled="disabled" selected="selected">Is it for dogs?</option>
@@ -151,9 +186,13 @@ function PropertyPage(){
           </select>
 
           <br/>
-        <button onClick={updateUser} >Update User</button>  
+</div>
+        <button onClick={updateUser} value="Update Property" className="form_button">Update Property</button>  
       </div>
+      <br/>
+      <br/>
     </div>
+    
   );
 }
 export default PropertyPage;
