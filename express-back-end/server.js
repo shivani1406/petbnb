@@ -21,6 +21,7 @@ const { request, response } = require("express");
 const e = require("express");
 const { resolveInclude } = require("ejs");
 const db = new Pool(dbParams);
+const bcrypt = require('bcrypt');
 // console.log(db);
 db.connect();
 
@@ -196,7 +197,7 @@ App.post("/login", (req, res) => {
   console.log(email);
   db.query(`SELECT email, password FROM USERS WHERE EMAIL = $1`, [email])
     .then(data => {
-      if (data.rows[0]["password"] === password) {
+      if (bcrypt.compareSync(password, data.rows[0]["password"])) {
         res.send(data.rows[0]["email"]);
       } else {
         res.send("invalid user");
@@ -206,12 +207,12 @@ App.post("/login", (req, res) => {
 
 App.post("/register", (req, res) => {
   const { name, email, password } = req.body;
+  const hashpassword = bcrypt.hashSync(password, 10);
   const role = "guest";
   const avatar_url = "profile_pic_url";
-  db.query(`insert into users (name, email, password, role, avatar_url) values ($1, $2, $3, $4, $5)`, [name, email, password, role, avatar_url])
+  db.query(`insert into users (name, email, password, role, avatar_url) values ($1, $2, $3, $4, $5)`, [name, email, hashpassword, role, avatar_url])
     .then(data => {
       if (data.rowCount) {
-        console.log(email);
         db.query(`select name from users where email = $1`, [email])
         .then(data => {
           res.send(data.rows[0]["name"]);
