@@ -9,12 +9,12 @@ class HomePage extends Component {
 
   render() {
     return (
-      
+
       <div className="App">
-      
-      {/* <Nav user={this.props.user}/> */}
-       <Profile />
-             
+
+        <Nav user={this.props.user} />
+        <Profile />
+
       </div>
     );
   }
