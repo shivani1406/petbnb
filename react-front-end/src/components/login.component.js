@@ -5,6 +5,7 @@ import './login.css';
 import Nav from "./navbar.component";
 import history from '../history';
 import { Navigate } from "react-router";
+import { navigate } from "@reach/router";
 
 
 export default class Login extends Component {
@@ -38,7 +39,8 @@ export default class Login extends Component {
     render() {
 
         if(this.state.user){
-            Navigate('/');
+            const user = this.state.user;
+            return navigate('/', {state: {user: user}})
         }
 
         return (

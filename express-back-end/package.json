@@ -11,6 +11,7 @@
     "db:reset": "node bin/resetdb.js"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
     "cookie-session": "^2.0.0",

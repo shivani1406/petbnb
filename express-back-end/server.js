@@ -8,7 +8,7 @@ const PORT = 8080;
 const morgan = require("morgan");
 const cookieSession = require('cookie-session');
 var cors = require('cors');
-App.use(cors()) 
+App.use(cors())
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
@@ -21,6 +21,7 @@ const { request, response } = require("express");
 const e = require("express");
 const { resolveInclude } = require("ejs");
 const db = new Pool(dbParams);
+const bcrypt = require('bcrypt');
 // console.log(db);
 db.connect();
 
@@ -55,7 +56,7 @@ App.get("/api/search", (req, res) => {
       * 
     FROM properties
     WHERE location = $1::text;
-  `,[search]
+  `, [search]
   ).then(({ rows: properties }) => {
     res.json(properties);
   });
@@ -64,7 +65,7 @@ App.get("/api/search", (req, res) => {
 App.put("/api/properties/:id", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
-  const location= req.body.location;
+  const location = req.body.location;
   const image = req.body.image;
   const property_type = req.body.property_type;
   const check_in_time = req.body.check_in_time;
@@ -81,10 +82,10 @@ App.put("/api/properties/:id", (req, res) => {
     `
     UPDATE properties
     SET name = $2::text , description = $3::text, location = $4::text, image = $5::text, property_type = $6::text, check_in_time = $7, check_out_time = $8, price_per_night = $9, room_size = $10, meal_plan = $11, pampering_session = $12, vet_visit = $13, daily_hairbrushing = $14, for_cat = $15, for_dog = $16
-    WHERE id = $1::integer;`, [req.params.id, name, description, location, image, property_type,  check_in_time,  check_out_time, price_per_night, room_size, meal_plan,   pampering_session, vet_visit, daily_hairbrushing, for_cat, for_dog])
+    WHERE id = $1::integer;`, [req.params.id, name, description, location, image, property_type, check_in_time, check_out_time, price_per_night, room_size, meal_plan, pampering_session, vet_visit, daily_hairbrushing, for_cat, for_dog])
     .then(() => {
-    res.json("updated successfully");
-  }).catch(error => console.log(error));
+      res.json("updated successfully");
+    }).catch(error => console.log(error));
 });
 
 
@@ -96,8 +97,8 @@ App.get("/api/properties/:id", (req, res) => {
       * 
     FROM properties WHERE id = $1::integer;`, [req.params.id])
     .then(({ rows: properties }) => {
-    res.json(properties);
-  });
+      res.json(properties);
+    });
 });
 App.post("/api/properties", (request, response) => {
   // if (process.env.TEST_ERROR) {
@@ -107,7 +108,7 @@ App.post("/api/properties", (request, response) => {
 
   const name = request.body.name;
   const description = request.body.description;
-  const location= request.body.location;
+  const location = request.body.location;
   const image = request.body.image;
   const property_type = request.body.property_type;
   const check_in_time = request.body.check_in_time;
@@ -169,13 +170,13 @@ App.post("/api/properties", (request, response) => {
 App.delete("/api/properties/:id", (request, response) => {
 
   db.query(`DELETE FROM properties WHERE id = $1::integer`, [request.params.id])
-  .then(() => {
-    setTimeout(() => {
-      response.status(204).json({});
-      // updateAppointment(Number(request.params.id), request.body.interview);
-    }, 1000);
-     })
-  .catch(error => console.log(error));
+    .then(() => {
+      setTimeout(() => {
+        response.status(204).json({});
+        // updateAppointment(Number(request.params.id), request.body.interview);
+      }, 1000);
+    })
+    .catch(error => console.log(error));
 });
 // App.use("/api", properties(db));
 // // Separated Routes for each Resource
@@ -195,12 +196,31 @@ App.post("/login", (req, res) => {
   const { email, password } = req.body;
   console.log(email);
   db.query(`SELECT email, password FROM USERS WHERE EMAIL = $1`, [email])
-  .then(data => {
-    if(data.rows[0]["password"]=== password) {
-    res.send(data.rows[0]["email"]);
-    } else {
-      res.send("invalid user");
-    }
+    .then(data => {
+      if (bcrypt.compareSync(password, data.rows[0]["password"])) {
+        res.send(data.rows[0]["email"]);
+      } else {
+        res.send("invalid user");
+      }
+    })
+})
+
+App.post("/register", (req, res) => {
+  const { name, email, password } = req.body;
+  const hashpassword = bcrypt.hashSync(password, 10);
+  const role = "guest";
+  const avatar_url = "profile_pic_url";
+  db.query(`insert into users (name, email, password, role, avatar_url) values ($1, $2, $3, $4, $5)`, [name, email, hashpassword, role, avatar_url])
+    .then(data => {
+      if (data.rowCount) {
+        db.query(`select name from users where email = $1`, [email])
+        .then(data => {
+          res.send(data.rows[0]["name"]);
+        })
+        
+      } else {
+        res.send(false);
+      }
     })
 })
 
