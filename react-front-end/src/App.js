@@ -17,17 +17,28 @@ import PropertyPage from './components/propertyPage';
 import AdminBookings from './components/adminBookings';
 class App extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = { username: ''};
+  }
+
+  onUsernameChange = (username) => {
+    this.setState({
+      username: username
+    });
+  }
+
   render() {
     return (
       <div className="App">
 
         <BrowserRouter history={history}>
-          <Nav />
+          
 
           <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<SignUp />} />
+            <Route exact path="/" element={<HomePage username={this.state.username} />} />
+            <Route exact path="/login" element={<Login onUsernameChange={this.onUsernameChange}/>} />
+            <Route exact path="/register" element={<SignUp onUsernameChange={this.onUsernameChange} />} />
             <Route path="/mainpage" element={<MainPage />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/createProperty" element={<CreateProperty />} />
@@ -35,6 +46,7 @@ class App extends Component {
             <Route path="/adminBookings" element={<AdminBookings />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
           </Routes>
+          <Nav username={this.state.username}/>
         </BrowserRouter>
         <Footer />
       </div>
