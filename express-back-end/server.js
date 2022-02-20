@@ -195,10 +195,10 @@ App.delete("/api/properties/:id", (request, response) => {
 App.post("/login", (req, res) => {
   const { email, password } = req.body;
   console.log(email);
-  db.query(`SELECT email, password FROM USERS WHERE EMAIL = $1`, [email])
+  db.query(`SELECT email, password , name, id, role FROM USERS WHERE EMAIL = $1`, [email])
     .then(data => {
       if (bcrypt.compareSync(password, data.rows[0]["password"])) {
-        res.send(data.rows[0]["email"]);
+        res.send(data.rows[0]);
       } else {
         res.send("invalid user");
       }
