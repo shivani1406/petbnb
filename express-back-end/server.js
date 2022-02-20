@@ -189,8 +189,15 @@ App.delete("/api/properties/:id", (request, response) => {
 // propertiesRoutes(db,App);
 // imagesRoutes(db, App);
 // reservationsRoutes(db,App);
+App.get("/logout", (req, res) => {
+  req.session = null;
+  res.send("Successfully Logged out");
+});
 
-
+App.get("/login", (req, res) => {
+  req.session = null;
+  res.send("cleared session");
+});
 
 App.post("/login", (req, res) => {
   const { email, password } = req.body;
