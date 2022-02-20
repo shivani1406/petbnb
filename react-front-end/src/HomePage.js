@@ -12,7 +12,7 @@ class HomePage extends Component {
 
       <div className="App">
 
-        <Nav user={this.props.user} />
+        <Nav  />
         <Profile />
 
       </div>

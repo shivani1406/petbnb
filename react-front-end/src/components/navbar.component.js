@@ -10,11 +10,12 @@ export default class Nav extends Component {
   render() {
 
     let buttons;
-    if(this.props.user){
+    let userName =localStorage.getItem('user_name');
+    if(localStorage.getItem('user_name') !== null){
 
       buttons = (<ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to={'/login'} className="nav-link">Logout</Link>
+               <h4>{userName}</h4> <Link to={'/login'} className="nav-link">Logout</Link>
               </li>
             </ul>)
 
