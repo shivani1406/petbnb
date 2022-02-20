@@ -220,9 +220,9 @@ App.post("/register", (req, res) => {
   db.query(`insert into users (name, email, password, role, avatar_url) values ($1, $2, $3, $4, $5)`, [name, email, hashpassword, role, avatar_url])
     .then(data => {
       if (data.rowCount) {
-        db.query(`select name from users where email = $1`, [email])
+        db.query(`select email, password , name, id, role from users where email = $1`, [email])
         .then(data => {
-          res.send(data.rows[0]["name"]);
+          res.send(data.rows[0]);
         })
         
       } else {
