@@ -1,9 +1,9 @@
 -- Users table seeds here (Example)
 INSERT INTO users (name,email,password,role,avatar_url) 
-VALUES ('Shivani','shivani1406sharma@gmail.com','hello','owner','express-back-end\public\avatars\images\avataaars1.png'),
-('Priyanka','priyanka.datti@gmail.com','hello','owner','express-back-end\public\avatars\images\avataaars2.png'),
-('Najma','najmaduale1@gmail.com','hello','owner','express-back-end\public\avatars\images\avataaars3.png'),
-('Harry','harry1@gmail.com','hello','guest','express-back-end\public\avatars\images\avataaars4.png');
+VALUES ('Shivani','shivani1406sharma@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars1.png'),
+('Priyanka','priyanka.datti@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars2.png'),
+('Najma','najmaduale1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars3.png'),
+('Harry','harry1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','guest','express-back-end\public\avatars\images\avataaars4.png');
 
 
 INSERT INTO properties (owner_id,name,description,location,image,property_type,check_in_time,

@@ -12,6 +12,7 @@ class HomePage extends Component {
 
       <div className="App">
 
+        <Nav  />
         <Profile />
 
       </div>
