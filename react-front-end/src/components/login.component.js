@@ -1,18 +1,19 @@
 import axios from "axios";
 import React, { Component, createContext, useNavigate } from "react";
-import App from "../App";
-import './login.css';
-import Nav from "./navbar.component";
-import history from '../history';
 import { Navigate } from "react-router";
-import { navigate } from "@reach/router";
+import './login.css';
 
 
 export default class Login extends Component {
 
 
-    
-    state = "";
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: ""
+        };
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         const data = {
@@ -22,8 +23,8 @@ export default class Login extends Component {
         axios.post('login', data).then(
             res => {
                 console.log(res); // prints the user email id
-                this.setState({user: res});
-                
+                this.setState({ username: res.data });
+                this.props.onUsernameChange(this.state.username);
 
             }
         ).catch(
@@ -38,12 +39,16 @@ export default class Login extends Component {
 
     render() {
 
-        if(this.state.user){
-            const user = this.state.user;
-            return navigate('/', {state: {user: user}})
+        if (this.state.username) {
+            return <Navigate to={'/'} />
         }
 
+        // if(this.props.username){
+        //     return navigate('/');
+        // }
+
         return (
+
             <div className="auth-wrapper">
                 <div className="auth-inner">
                     <form onSubmit={this.handleSubmit}>
