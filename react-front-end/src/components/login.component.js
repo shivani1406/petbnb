@@ -43,7 +43,12 @@ export default function Login() {
         )
     };
 
-
+    axios
+    .get("/login")
+    .then(() => {
+      localStorage.clear();
+      console.log("session cleared");
+    });
 
 
     
