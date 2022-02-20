@@ -6,7 +6,7 @@ import './login.css';
 import Nav from "./navbar.component";
 import history from '../history';
 import { Navigate } from "react-router";
-import { navigate } from "@reach/router";
+import './login.css';
 
 
 export default function Login() {
@@ -32,6 +32,7 @@ export default function Login() {
                 navigate(`/mainpage`);
             } else {
                 navigate(`/admin`);
+
             }
          
         }
@@ -52,7 +53,13 @@ export default function Login() {
         //     return navigate('/', {state: {user: user}})
         // }
 
+
+        // if(this.props.username){
+        //     return navigate('/');
+        // }
+
         return (
+
             <div className="auth-wrapper">
                 <div className="auth-inner">
                     <form >

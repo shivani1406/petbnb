@@ -6,7 +6,13 @@ import { navigate } from "@reach/router";
 
 export default class SignUp extends Component {
 
-    state = "";
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: ""
+        };
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         const data = {
@@ -18,11 +24,8 @@ export default class SignUp extends Component {
 
         axios.post('http://localhost:8080/register', data).then(
             res => {
-                if(res){
-                    this.setState({
-                        user: res
-                    });
-                }
+                this.setState({ username: res.data });
+                this.props.onUsernameChange(this.state.username);
             }
         ).catch(
             err => {
@@ -32,10 +35,8 @@ export default class SignUp extends Component {
     }
 
     render() {
-        if(this.state.user){
-            const user = this.state.user;
-            console.log(user);
-            return navigate('/', {state: {user: user}})
+        if (this.state.username) {
+            return <Navigate to={'/'} />
         }
         return (
             <div className="auth-wrapper">

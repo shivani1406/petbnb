@@ -6,7 +6,7 @@ import Profile from './Front_image/Front_image';
 
 class HomePage extends Component {
 
-
+ 
   render() {
     return (
 
