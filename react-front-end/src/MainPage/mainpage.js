@@ -35,7 +35,7 @@ export default function mainpage(){
       let items = {searchquery};
       console.log(searchquery);
       console.warn("item",items);
-      axios.get(`${baseUrl}/api/search`,items)
+      axios.post(`${baseUrl}/api/search`,items)
        // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
