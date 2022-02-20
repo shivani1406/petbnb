@@ -1,32 +1,49 @@
 import axios from "axios";
-import React, { Component } from "react";
-import { Navigate } from "react-router";
+import React, { Component,useState} from "react";
+import { Link, useNavigate} from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { navigate } from "@reach/router";
 
-export default class SignUp extends Component {
+export default function SignUp() {
+    const navigate = useNavigate();
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         username: ""
+    //     };
+    // }
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const registerform = (event) => {
+        event.preventDefault();
+        // const data = {
+        //     name: this.name,
+        //     email: this.email,
+        //     password: this.password
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: ""
-        };
-    }
+        // };
 
-    handleSubmit = e => {
-        e.preventDefault();
-        const data = {
-            name: this.name,
-            email: this.email,
-            password: this.password
+        axios.post('http://localhost:8080/register', {name, email, password})
+        // .then(
+        //     res => {
+        //         this.setState({ username: res.data });
+        //         this.props.onUsernameChange(this.state.username);
+        //     }
+        .then((res) => {
+            const user = res.data;
+            localStorage.setItem('user_id',user.id);
+            localStorage.setItem('user_name',user.name);
+            localStorage.setItem('user_role',user.role);
+            console.log(user);
+            if (localStorage.getItem('user_role') == "guest") {
+                navigate(`/mainpage`);
+            } else {
+                navigate(`/admin`);
 
-        };
-
-        axios.post('http://localhost:8080/register', data).then(
-            res => {
-                this.setState({ username: res.data });
-                this.props.onUsernameChange(this.state.username);
             }
+         
+        }
         ).catch(
             err => {
                 console.log(err);
@@ -34,40 +51,48 @@ export default class SignUp extends Component {
         )
     }
 
-    render() {
-        if (this.state.username) {
-            return <Navigate to={'/'} />
-        }
+    
+        // if (this.state.username) {
+        //     return <Navigate to={'/'} />
+        // }
         return (
             <div className="auth-wrapper">
                 <div className="auth-inner">
-                    <form onSubmit={this.handleSubmit}>
+                    <form >
                         <h3>Register</h3>
 
                         <div className="form-group">
                             <label>Name</label>
                             <input type="text" className="form-control" placeholder="Enter Name"
-                                onChange={e => this.name = e.target.value} />
+                                 value={name}
+                                 onChange={(event) => {
+                                   setName(event.target.value);
+                                 }} />
                         </div>
 
                         <div className="form-group">
                             <label>Email</label>
                             <input type="email" className="form-control" placeholder="Enter email"
-                                onChange={e => this.email = e.target.value} />
+                                 value={email}
+                                 onChange={(event) => {
+                                   setEmail(event.target.value);
+                                 }}/>
                         </div>
 
                         <div className="form-group">
                             <label>Password</label>
                             <input type="password" className="form-control" placeholder="Enter password"
-                                onChange={e => this.password = e.target.value} />
+                                 value={password}
+                                 onChange={(event) => {
+                                   setPassword(event.target.value);
+                                 }} />
                         </div>
                         <br />
 
-                        <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
+                        <button type="submit" className="btn btn-dark btn-lg btn-block"  onClick={registerform}>Register</button>
 
                     </form>
                 </div>
             </div>
         );
     }
-}
