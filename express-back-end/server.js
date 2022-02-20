@@ -47,7 +47,7 @@ App.get("/api/properties", (req, res) => {
     res.json(properties);
   });
 });
-App.get("/api/search", (req, res) => {
+App.post("/api/search", (req, res) => {
   const search = req.body.searchquery;
   console.log(req.body.searchquery);
   db.query(
