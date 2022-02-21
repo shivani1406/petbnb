@@ -407,6 +407,10 @@ td button{
   background: #4a5594;
 }
 
+.btn .btn-success > a {
+  text-decoration: none;
+  color: white;
+}
 
 .search_page{
   background: #eee5e9;

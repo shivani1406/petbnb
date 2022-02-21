@@ -1,10 +1,10 @@
 import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 export default function admin(){
-  
+  const navigate = useNavigate();
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
 
@@ -36,7 +36,7 @@ export default function admin(){
          <td>{property.name}
          <p>{property.description}</p></td>
         
-         <td><button type="button" className="btn btn-success"><Link to={`/propertyPage/${property.id}`} activeClassName="current">Update</Link></button>
+         <td><button type="button" className="btn btn-success" onClick={event => navigate(`/propertyPage/${property.id}`)}>Update</button>
          <button type="button" className="btn btn-danger" onClick={event => handleDelete(`${property.id}`)}>Delete</button>
          </td>
        </tr>
@@ -58,7 +58,7 @@ export default function admin(){
         </tbody>
       </table>
       
-      <button type="button" className="btn btn-primary" ><Link to={`/createProperty`} activeClassName="current">Create Property</Link></button>
+      <button type="button" className="btn btn-success" onClick={event => navigate('/createProperty')}>Create Property</button>
       
     </div>
   );
