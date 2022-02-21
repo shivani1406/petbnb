@@ -17,12 +17,17 @@ export default function Nav () {
     };
     let userName =localStorage.getItem('user_name');
     if(localStorage.getItem('user_name') !== null){
-
-      buttons = (<ul >
+      if(localStorage.getItem('user_role') == "owner") {
+        buttons = ( <ul >
         <li >
           <Link to={'/'} >Home</Link>
         </li>
-              
+        <li >
+          <Link to={'/admin'} >Admin</Link>
+        </li>
+        <li >
+          <Link to={'/adminBookings'} >Booked Properties</Link>
+        </li>
                <li >
                <button
                   onClick={(e) => logOut(e)} >Logout</button>
@@ -31,8 +36,29 @@ export default function Nav () {
                <a href="/">Welcome {userName} !</a> 
                {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                </li>
-            </ul>)
-
+            </ul>
+            )    
+      }
+      else {
+        buttons = (
+        
+          <ul >
+            <li >
+              <Link to={'/'} >Home</Link>
+            </li>
+                  
+                   <li >
+                   <button
+                      onClick={(e) => logOut(e)} >Logout</button>
+                  </li>
+                  <li >
+                   <a href="/">Welcome {userName} !</a> 
+                   {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
+                   </li>
+                </ul>
+                )    
+      }
+     
     } else {
 
       buttons = (<ul >
