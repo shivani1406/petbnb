@@ -1,8 +1,11 @@
 import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import { useParams } from 'react-router-dom';
-
+import { useAlert } from 'react-alert';
+import { useNavigate} from "react-router-dom";
 function PropertyPage(){
+  const navigate = useNavigate();
+  const alert = useAlert()
   let {id} = useParams();
   // const [properties, setProperties] = useState([]);
   const [name, setName] = useState("");
@@ -75,6 +78,8 @@ function PropertyPage(){
       body:JSON.stringify(item)
     }).then((result) => {
       result.json().then((resp) => {
+        alert.show('Property Updated Successfully!')
+        navigate('/admin');
         console.warn(resp)
         getProperties()
       })

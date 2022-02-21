@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; //optional
 import axios from 'axios';
+// import { Link } from 'react-router-dom';
 // import Popup from 'react-popup';
 
 
@@ -117,9 +118,11 @@ onSubmit(e) {
   for_dog:stringToBoolean(this.state.for_dog),
   owner_id: 1
   };
+  
   const baseUrl = 'http://localhost:8080';
   axios.post(`${baseUrl}/api/properties`, userObject)
       .then((res) => {
+      //  return( <Alert>Property Create Successfully ! <Link to='/admin'>OK !</Link></Alert>);
         // Popup.alert('Successfully Created Property');
       }).catch((error) => {
           console.log(error)

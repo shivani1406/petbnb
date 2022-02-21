@@ -2,9 +2,11 @@ import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
 import { useNavigate} from "react-router-dom";
+import { useAlert } from 'react-alert';
 
 export default function admin(){
   const navigate = useNavigate();
+  const alert = useAlert()
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
 
@@ -25,6 +27,8 @@ export default function admin(){
     const handleDelete = (id) => {
       axios.delete(`${baseUrl}/api/properties/${id}`) 
       .then((response) => {
+        alert.show('Property Deleted Successfully!')
+        window.location.reload(false);
         console.log(response.data)
       }) 
       }
