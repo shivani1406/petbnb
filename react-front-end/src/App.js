@@ -10,6 +10,12 @@ import Footer from './Footer';
 import history from './history';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap/dist/js/bootstrap.min.js'
+//import 'jquery';
+//import '@popperjs/core'; 
+//import 'bootstrap/dist/js/bootstrap.bundle';
+
+
 import Nav from "./components/navbar.component";
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
