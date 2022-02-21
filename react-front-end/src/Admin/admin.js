@@ -59,6 +59,7 @@ export default function admin(){
       </table>
       
       <button type="button" className="btn btn-primary" ><Link to={`/createProperty`} activeClassName="current">Create Property</Link></button>
+      
     </div>
   );
 }
