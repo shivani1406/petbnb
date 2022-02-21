@@ -28,12 +28,12 @@ return(<div className="main-page">
       <h3 className="main-page-description">Rent a place for your adorable pet.<br/> And have a peaceful vacation !</h3>
       
     </div>
-    <h1>{ this.state.message }</h1>
+    {/* <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
         </button> 
-        <a href="../mainpage"> MainPage </a>
-        <a href="../admin"> AdminPage </a>
+        <a href="../mainpage"> MainPage </a> */}
+        {/* <a href="../admin"> AdminPage </a> */}
   </div>
   
   );
