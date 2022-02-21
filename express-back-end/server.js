@@ -55,7 +55,7 @@ App.post("/api/search", (req, res) => {
     SELECT
       * 
     FROM properties
-    WHERE location = $1::text;
+    WHERE LOWER(location) = LOWER($1::text);
   `, [search]
   ).then(({ rows: properties }) => {
     res.json(properties);

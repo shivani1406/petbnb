@@ -18,33 +18,47 @@ export default function Nav () {
     let userName =localStorage.getItem('user_name');
     if(localStorage.getItem('user_name') !== null){
 
-      buttons = (<ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-               <h4>{userName}</h4> 
-               {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
+      buttons = (<ul >
+        <li >
+          <Link to={'/'} >Home</Link>
+        </li>
+              
+               <li >
                <button
-                  onClick={(e) => logOut(e)}>Logout</button>
+                  onClick={(e) => logOut(e)} >Logout</button>
               </li>
+              <li >
+               <a href="/">Welcome {userName} !</a> 
+               {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
+               </li>
             </ul>)
 
     } else {
 
-      buttons = (<ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link to={'/login'} className="nav-link">Login</Link>
+      buttons = (<ul >
+        <li >
+          <Link to={'/'} >Home</Link>
         </li>
-        <li className="nav-item">
-          <Link to={"/register"} className="nav-link">Sign up</Link>
+        <li >
+          <Link to={'/login'} >Login</Link>
+        </li>
+        <li >
+          <Link to={"/register"} >Sign up</Link>
         </li>
       </ul>)
     }
 
     return (
 
-      <nav className="navbar navbar-expand navbar-light fixed-top">
-        <div className="container">
-          <Link to={'/'} className="nav-link"><img className="imageLogo" src={imageLogo} alt="logologologo"></img></Link>
-          <div className="collapse navbar-collapse">
+      <nav>
+        
+        <div >
+        <input type="checkbox" id="check"/>
+        <label for="check" className="checkbtn">
+        <i className="fas fa-bars"></i>
+</label>
+          <Link to={'/'} ><img className="imageLogo" src={imageLogo} alt="logologologo"></img></Link>
+          <div >
             {buttons}
           </div>
         </div>
