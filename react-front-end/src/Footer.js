@@ -8,9 +8,9 @@ export class Footer extends Component {
           <div className="container">
               © 2022 PetBnB
               <div className="grey-text text-lighten-4 right">
-                <a className="grey-text text-lighten-3" href="https://facebook.com" target="_blank" style={{padding: "1em"}}><i className="fab fa-facebook"></i></a>
-                <a className="grey-text text-lighten-3" href="https://twitter.com" target="_blank" style={{padding: "1em"}}><i className="fab fa-twitter"></i></a>
-                <a className="grey-text text-lighten-3" href="https://instagram.com" target="_blank"style={{padding: "1em"}}><i className="fab fa-instagram"></i></a>
+                <a className="grey-text text-lighten-3" href="/" target="_blank" style={{padding: "1em"}}><i className="fab fa-facebook"></i></a>
+                <a className="grey-text text-lighten-3" href="/" target="_blank" style={{padding: "1em"}}><i className="fab fa-twitter"></i></a>
+                <a className="grey-text text-lighten-3" href="/" target="_blank"style={{padding: "1em"}}><i className="fab fa-instagram"></i></a>
               </div>
           </div>
         </div>
