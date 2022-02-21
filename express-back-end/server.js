@@ -231,7 +231,8 @@ App.post("/register", (req, res) => {
     })
 })
 
-App.get("/api/reservations", (req, res) => {
+App.get("/api/reservations/:id", (req, res) => {
+  
   db.query(
     `
     SELECT
@@ -240,7 +241,8 @@ App.get("/api/reservations", (req, res) => {
       description, image 
     FROM reservations JOIN properties ON
     property_id = properties.id
-    JOIN users ON user_id = users.id ;`)
+    JOIN users ON user_id = users.id
+    WHERE owner_id = $1 ;`, [req.params.id])
     .then(({ rows: reservations }) => {
     res.json(reservations);
   });
