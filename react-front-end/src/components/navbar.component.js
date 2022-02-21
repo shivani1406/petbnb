@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import imageLogo from '../images/petbnb.png';
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function Nav () {
     };
     let userName =localStorage.getItem('user_name');
     if(localStorage.getItem('user_name') !== null){
-      if(localStorage.getItem('user_role') == "owner") {
+      if(localStorage.getItem('user_role') === "owner") {
         buttons = ( <ul >
         <li >
           <Link to={'/'} >Home</Link>

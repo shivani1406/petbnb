@@ -34,7 +34,7 @@ const MyBookings = () => {
 
 			<tr>
       <td>{sno++}</td>
-      <td><img className="property__img " src={property.image} /></td>
+      <td><img className="property__img " src={property.image} alt=""/></td>
       <td>{property.name}</td>
       <td>{property.location}</td>
 			<td>{property.price_per_night}</td>

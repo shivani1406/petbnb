@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; //optional
+import React from 'react'; //optional
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import PropertyTile from '../components/property-tile';
@@ -7,24 +7,18 @@ export default function mainpage(){
 
   
     const [searchquery, setSearch] = useState("");
-    const [query, setquery] = useState("");
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
-    // const getPropertyInfo = async () => {
-    //   var result = await axios.get('/api/properties');
-    //   setproperties(result.data.hits);
-    //   console.log(result.data.hits);
-    // };
+    
 
     useEffect(() => {
         getPropertyInfo();
     }, []);
 
    const getPropertyInfo = () => {
-      axios.get(`${baseUrl}/api/properties`) // You can simply make your requests to "/api/whatever you want"
+      axios.get(`${baseUrl}/api/properties`) 
       .then((response) => {
-        // handle success
-        console.log(response.data) // The entire response from the Rails API
+        console.log(response.data) 
 
         setproperties(
         response.data
@@ -36,11 +30,9 @@ export default function mainpage(){
       console.log(searchquery);
       console.warn("item",items);
       axios.post(`${baseUrl}/api/search`,items)
-       // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
-        // handle success
         
-        console.log(response.data) // The entire response from the Rails API
+        console.log(response.data)
 
         setproperties(
         response.data
@@ -68,7 +60,7 @@ export default function mainpage(){
     });
     return(
     <div className="search_page">
-      {/* <p>main page</p> */}
+      
       <form className="app__searchForm" onSubmit={onSubmit}>
         <input
           className="app__input"

@@ -1,11 +1,10 @@
-import React, { Component } from 'react'; //optional
+import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 function PropertyPage(){
   let {id} = useParams();
-  const [properties, setProperties] = useState([])
+  // const [properties, setProperties] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -21,7 +20,7 @@ function PropertyPage(){
   const [daily_hairbrushing, setDailyHairBrushing] = useState("");
   const [for_cat, setForCat] = useState("");
   const [for_dog, setForDog] = useState("");
-  const [userId,setUserId]=useState(null)
+  // const [userId,setUserId]=useState(null)
   const baseUrl = 'http://localhost:8080';
   useEffect(() => {
     getProperties();
@@ -29,7 +28,7 @@ function PropertyPage(){
   const getProperties = () => {
     fetch(`${baseUrl}/api/properties/${id}`).then((result) => {
       result.json().then((resp) => {
-        setProperties(resp)
+        // setProperties(resp)
         setName(resp[0].name)
         setDescription(resp[0].description)
         setLocation(resp[0].location)
@@ -39,7 +38,7 @@ function PropertyPage(){
         setCheckOutTime(resp[0].check_out_time)
         setPricePerNight(resp[0].price_per_night)
         setRoomSize(resp[0].room_size)
-        setUserId(resp[0].id)
+        // setUserId(resp[0].id)
         setMealPlan(resp[0].meal_plan)
         setPamperingSession(resp[0].pampering_session)
         setVetVisit(resp[0].vet_visit)
@@ -50,14 +49,12 @@ function PropertyPage(){
     })
   }
 
-  function selectProperty(id)
-  {
-    let item=properties[id-1];
-    setName(item.name)
-        // setEmail(item.email)
-        // setMobile(item.mobile);
-        setUserId(item.id)
-  }
+  // function selectProperty(id)
+  // {
+  //   let item=properties[id-1];
+  //   setName(item.name)
+  //       // setUserId(item.id)
+  // }
   const stringToBoolean = function(string){
     switch(string.toLowerCase().trim()){
         case "true": case "yes": case "1": return true;
@@ -104,7 +101,7 @@ function PropertyPage(){
 <div className="input_box">
 <span className="details">Property Image</span>
         <input type="text" value={image} onChange={(e)=>{setImage(e.target.value)}} /> <br /><br />
-        <img src={image} className="propertyTile__img" />
+        <img src={image} className="propertyTile__img" alt=""/>
           
 
           <br/>

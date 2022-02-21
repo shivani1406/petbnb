@@ -1,5 +1,4 @@
 import React, { Component } from 'react'; //optional
-import { useState , useEffect} from "react";
 import axios from 'axios';
 // import Popup from 'react-popup';
 
@@ -182,7 +181,7 @@ onSubmit(e) {
 <div className="input_box">
 <span className="details">Property Image</span>
             <input type="text" onChange={this.onChangeImage} className="pet-form-img" placeholder="Enter file url" required/>
-            <img src={this.state.image} className="propertyTile__img" />
+            <img src={this.state.image} className="propertyTile__img" alt=""/>
           
 
           <br/>
