@@ -231,7 +231,20 @@ App.post("/register", (req, res) => {
     })
 })
 
-
+App.get("/api/reservations", (req, res) => {
+  db.query(
+    `
+    SELECT
+      property_id,
+      users.name as user_name, properties.name as property_name,
+      description, image 
+    FROM reservations JOIN properties ON
+    property_id = properties.id
+    JOIN users ON user_id = users.id ;`)
+    .then(({ rows: reservations }) => {
+    res.json(reservations);
+  });
+});
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
