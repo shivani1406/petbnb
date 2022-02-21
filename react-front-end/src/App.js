@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './HomePage';
 import MainPage from './MainPage/mainpage';
 import PropertyDetails from './property_details';
+import MyBookings from './my_bookings.js';
 import Admin from './Admin/admin';
 import CreateProperty from './create_property';
 import Footer from './Footer';
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/propertyPage/:id" element={<PropertyPage />} />
             <Route path="/adminBookings/*" element={<AdminBookings />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
+            <Route path="/myBookings/" element={<MyBookings />} />
           </Routes>
         </BrowserRouter>
         <Footer />

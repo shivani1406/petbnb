@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './property_details.css';
 import { Button, Modal } from 'react-bootstrap';
@@ -9,6 +9,7 @@ const PropertyDetails = () => {
 	const [property, setproperty] = useState([]);
 	const baseUrl = 'http://localhost:8080';
 
+const navigate = useNavigate();
 	useEffect(() => {
 		getPropertyDetails();
 }, []);
@@ -27,8 +28,18 @@ const getPropertyDetails = () => {
 
 const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleCloseConfirmation = () => setShowConfirmation(false);
-  const handleShowConfirmation = () => setShowConfirmation(true);
+  const handleCloseConfirmation = () => {
+		setShowConfirmation(false);
+		navigate(`/myBookings`);
+	}
+  const handleShowConfirmation = () => {
+		const user_id = JSON.parse(localStorage.getItem('user_id'));
+
+		axios.post('/api/properties/book',  { id, user_id });
+        
+
+		setShowConfirmation(true);
+	}
 
   return (
 		<div>
@@ -39,14 +50,14 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 			<h3>{property.location}</h3>
 			<img className='property-details-img' src={property.image} alt = {property.name} />
 				<p className='property-description-p'>{property.description}</p>
-				<a className='book-property-btn' data-toggle="modal" data-target="#confirmationModal">Book</a>
+				
 			
 	  </div>
 
 	
 
 
-		<Button variant="primary" onClick={handleShowConfirmation}>
+		<Button className='book-property-btn' variant="primary" onClick={handleShowConfirmation}>
         Book Property
       </Button>
 

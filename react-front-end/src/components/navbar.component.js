@@ -46,13 +46,19 @@ export default function Nav () {
             <li >
               <Link to={'/'} >Home</Link>
             </li>
+            <li >
+              <Link to={'/mainpage'} >Properties</Link>
+            </li>
+            <li >
+              <Link to={'/myBookings'} >My Bookings</Link>
+            </li>
                   
                    <li >
                    <button
                       onClick={(e) => logOut(e)} >Logout</button>
                   </li>
                   <li >
-                   <a href="/">Welcome {userName} !</a> 
+                   <a href="/">{userName} !</a> 
                    {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                    </li>
                 </ul>

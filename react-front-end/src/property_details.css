@@ -18,8 +18,9 @@ a.book-property-btn {
 .book-property-btn {
 	font-size: 24px;
 	text-decoration: none;
-	background: #f5bdcf;
-	color: #000;
+	background: #f5bdcf !important;
+	color: #000 !important;
+	border-color: #f5bdcf !important;
 	padding: 0 20px;
 	display: block;
 	width: 160px;
