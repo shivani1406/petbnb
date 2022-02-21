@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //optional
-import { useState , useEffect} from "react";
 import axios from 'axios';
+// import { Link } from 'react-router-dom';
 // import Popup from 'react-popup';
 
 
@@ -118,9 +118,11 @@ onSubmit(e) {
   for_dog:stringToBoolean(this.state.for_dog),
   owner_id: 1
   };
+  
   const baseUrl = 'http://localhost:8080';
   axios.post(`${baseUrl}/api/properties`, userObject)
       .then((res) => {
+      //  return( <Alert>Property Create Successfully ! <Link to='/admin'>OK !</Link></Alert>);
         // Popup.alert('Successfully Created Property');
       }).catch((error) => {
           console.log(error)
@@ -182,7 +184,7 @@ onSubmit(e) {
 <div className="input_box">
 <span className="details">Property Image</span>
             <input type="text" onChange={this.onChangeImage} className="pet-form-img" placeholder="Enter file url" required/>
-            <img src={this.state.image} className="propertyTile__img" />
+            <img src={this.state.image} className="propertyTile__img" alt=""/>
           
 
           <br/>

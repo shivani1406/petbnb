@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-// import "./style.css";
+
 
 export default function PropertyTile(props) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function PropertyTile(props) {
         onClick={() => navigate(`/propertyDetails/${props.id}`)}
       >
 
-        <img className="propertyTile__img" src={props.avatar} />
+        <img className="propertyTile__img" src={props.avatar} alt=""/>
         <h3 className="propertyTile__name" >
           {props.name}
         </h3>

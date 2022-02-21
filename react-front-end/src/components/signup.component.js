@@ -1,8 +1,6 @@
 import axios from "axios";
-import React, { Component,useState} from "react";
-import { Link, useNavigate} from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import { navigate } from "@reach/router";
+import React, { useState} from "react";
+import { useNavigate} from "react-router-dom";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -36,7 +34,7 @@ export default function SignUp() {
             localStorage.setItem('user_name',user.name);
             localStorage.setItem('user_role',user.role);
             console.log(user);
-            if (localStorage.getItem('user_role') == "guest") {
+            if (localStorage.getItem('user_role') === "guest") {
                 navigate(`/mainpage`);
             } else {
                 navigate(`/admin`);

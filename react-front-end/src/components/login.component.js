@@ -1,12 +1,8 @@
 import axios from "axios";
-import React, { Component,useState} from "react";
-import { Link, useNavigate} from "react-router-dom";
-import App from "../App";
+import React, { useState} from "react";
+import { useNavigate} from "react-router-dom";
 import './login.css';
-import Nav from "./navbar.component";
-import history from '../history';
-import { Navigate } from "react-router";
-import './login.css';
+
 
 
 export default function Login() {
@@ -28,7 +24,7 @@ export default function Login() {
             localStorage.setItem('user_name',user.name);
             localStorage.setItem('user_role',user.role);
             console.log(user);
-            if (localStorage.getItem('user_role') == "guest") {
+            if (localStorage.getItem('user_role') === "guest") {
                 navigate(`/mainpage`);
             } else {
                 navigate(`/admin`);

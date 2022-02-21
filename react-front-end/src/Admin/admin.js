@@ -1,22 +1,19 @@
-import React, { Component } from 'react'; //optional
+import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
-import PropertyList from '../components/property-list';
-import createProperty from '../create_property';
-import history from '../history';
-import { Link } from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import { useNavigate} from "react-router-dom";
+import { useAlert } from 'react-alert';
+
 export default function admin(){
-  let {id} = useParams();
-  const [query, setquery] = useState("");
+  const navigate = useNavigate();
+  const alert = useAlert()
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
 
     const getPropertyInfo = () => {
-      axios.get(`${baseUrl}/api/properties`) // You can simply make your requests to "/api/whatever you want"
+      axios.get(`${baseUrl}/api/properties`) 
       .then((response) => {
-        // handle success
-        console.log(response.data) // The entire response from the Rails API
+        console.log(response.data) 
 
         setproperties(
         response.data
@@ -30,6 +27,8 @@ export default function admin(){
     const handleDelete = (id) => {
       axios.delete(`${baseUrl}/api/properties/${id}`) 
       .then((response) => {
+        alert.show('Property Deleted Successfully!')
+        window.location.reload(false);
         console.log(response.data)
       }) 
       }
@@ -37,11 +36,11 @@ export default function admin(){
       return (
         
         <tr key={property.id}>
-       <td> <img className="property__img " src={property.image} /></td>
+       <td> <img className="property__img " src={property.image} alt=""/></td>
          <td>{property.name}
          <p>{property.description}</p></td>
         
-         <td><button type="button" className="btn btn-success"><Link to={`/propertyPage/${property.id}`} activeClassName="current">Update</Link></button>
+         <td><button type="button" className="btn btn-success" onClick={event => navigate(`/propertyPage/${property.id}`)}>Update</button>
          <button type="button" className="btn btn-danger" onClick={event => handleDelete(`${property.id}`)}>Delete</button>
          </td>
        </tr>
@@ -63,7 +62,8 @@ export default function admin(){
         </tbody>
       </table>
       
-      <button type="button" className="btn btn-primary" ><Link to={`/createProperty`} activeClassName="current">Create Property</Link></button>
+      <button type="button" className="btn btn-success" onClick={event => navigate('/createProperty')}>Create Property</button>
+      
     </div>
   );
 }
