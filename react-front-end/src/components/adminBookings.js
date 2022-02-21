@@ -12,7 +12,9 @@ export default function adminBookings(){
       const [properties, setproperties] = useState([]);
       const baseUrl = 'http://localhost:8080';
       const getPropertyInfo = () => {
-        axios.get(`${baseUrl}/api/reservations`) // You can simply make your requests to "/api/whatever you want"
+        
+        axios.get(`${baseUrl}/api/reservations/${localStorage.getItem('user_id')}`) 
+        // You can simply make your requests to "/api/whatever you want"
         .then((response) => {
           // handle success
           console.log(response.data) // The entire response from the Rails API

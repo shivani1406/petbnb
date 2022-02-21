@@ -26,7 +26,7 @@ export default function Nav () {
           <Link to={'/admin'} >Admin</Link>
         </li>
         <li >
-          <Link to={'/adminBookings'} >Booked Properties</Link>
+          <Link to={`/adminBookings/${localStorage.getItem('user_id')}`} >Booked Properties</Link>
         </li>
                <li >
                <button

@@ -32,7 +32,7 @@ class App extends Component {
             <Route path="/admin" element={<Admin />} />
             <Route path="/createProperty" element={<CreateProperty />} />
             <Route path="/propertyPage/:id" element={<PropertyPage />} />
-            <Route path="/adminBookings" element={<AdminBookings />} />
+            <Route path="/adminBookings/*" element={<AdminBookings />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
           </Routes>
         </BrowserRouter>
