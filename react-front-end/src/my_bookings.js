@@ -46,6 +46,7 @@ const MyBookings = () => {
 
 	return (
 		<div className='my-bookings-container'>
+			<h3>My Bookings</h3>
 			<Table bordered hover>
   <thead>
     <tr>
