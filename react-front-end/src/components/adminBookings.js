@@ -38,7 +38,9 @@ export default function adminBookings(){
       });
   return(
     <div className="app__createproperty">
+      <h3>Booked Properties</h3>
 <table className="table" >
+  
       <thead>
         <tr>
         <th>Image</th>

@@ -283,10 +283,11 @@ height: 550px;
 .app__properties {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 220px 220px ;
-  grid-gap: 50px;
+  grid-template-columns: 220px 220px 220px 220px;
+  grid-gap: 75px;
   align-items: center;
   margin-bottom: 40px;
+  margin-left: 40px;
 }
 
 .app__admin {
@@ -318,7 +319,7 @@ thead,th{
   position: sticky;
   top: 0;
   background:black;
-  color: white;
+  color: rgb(3, 3, 3);
   font-weight: 800;
   font-size: 15px;
 }
@@ -431,7 +432,7 @@ td button{
 
 @media(max-width: 858px){
   .app__properties {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   .app__createproperty{
     max-width: 100%;

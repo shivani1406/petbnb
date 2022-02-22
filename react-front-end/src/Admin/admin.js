@@ -9,9 +9,8 @@ export default function admin(){
   const alert = useAlert()
     const [properties, setproperties] = useState([]);
     const baseUrl = 'http://localhost:8080';
-
     const getPropertyInfo = () => {
-      axios.get(`${baseUrl}/api/properties`) 
+      axios.get(`${baseUrl}/api/properties1/${localStorage.getItem('user_id')}`) 
       .then((response) => {
         console.log(response.data) 
 
@@ -49,6 +48,7 @@ export default function admin(){
     });
   return (
     <div className="app__admin">
+      <h3>My Properties</h3>
       <table className="table" >
       <thead>
         <tr>
