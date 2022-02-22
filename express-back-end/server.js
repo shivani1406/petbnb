@@ -35,6 +35,20 @@ App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
+App.get("/api/properties1/:owner_id", (req, res) => {
+  db.query(
+    `
+    SELECT
+      * 
+    FROM properties
+    WHERE owner_id = $1
+    ;
+  `,[req.params.owner_id]
+  ).then(({ rows: properties }) => {
+    res.json(properties);
+  });
+});
+
 App.get("/api/properties", (req, res) => {
   db.query(
     `
