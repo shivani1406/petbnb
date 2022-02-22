@@ -1,45 +1,10 @@
-# React + Express No-Fluff Boilerplate
+# PetBnB
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
+The app will help connect hosts with the clients who want to book their stays for their pets and to provide their pets some pampering. Eventually helping the host to make some money out of their property and help guests to explore amazing properties
 
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
-
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
-
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
-
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
-
-## Running the projects
-
-You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
-
-In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3006` in your browser.
-
-please run the following command : psql -U vagrant -d template1
-                                   CREATE ROLE student WITH LOGIN password 'student';
-                                   CREATE DATABASE final-project OWNER student;
-
-In the other terminal, `cd` into `express-back-end`. 
-Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-Update the .env file with your correct local information 
-  - username: `student` 
-  - password: `student` 
-  - database: `final-project`
-Run `npm install` or `yarn` to install the dependencies, Reset database: `npm run db:reset` , 
- then `npm start` or `yarn start` to launch the server.
-
-In the browser, you can click on the button and see the data get loaded.
-
-If this doesn't work, please message me!
-
-## Next steps
-
-From here, you can start working on your project!
-
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
-
-At some point, you'll likely want to install and configure a database driver for Postgres or MongoDB-- Refer to past projects for hints on how to do this.
-
-
+## Screenshots
+!["Initial Page"](react-front-end/public/screenshots/Screenshot1.png)
+!["Logging In"](react-front-end/public/screenshots/Screenshot2.png)
+!["Guest Page"](react-front-end/public/screenshots/Screenshot3.png)
+!["Admin Page"](react-front-end/public/screenshots/Screenshot4.png)
 
