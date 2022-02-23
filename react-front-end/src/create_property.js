@@ -35,7 +35,8 @@ export default function createProperty(){
     }
     function create_property(e) {
       e.preventDefault();
-      const userObject = {name, description, location, image, property_type, check_out_time, check_in_time, price_per_night, room_size, meal_plan, pampering_session, vet_visit, daily_hairbrushing, for_cat, for_dog};
+      const owner_id = localStorage.getItem('user_id');
+      const userObject = {name, description, location, image, property_type, check_out_time, check_in_time, price_per_night, room_size, meal_plan, pampering_session, vet_visit, daily_hairbrushing, for_cat, for_dog, owner_id};
       
       const baseUrl = 'http://localhost:8080';
       axios.post(`${baseUrl}/api/properties`, userObject)
