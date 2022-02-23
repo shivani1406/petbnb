@@ -57,7 +57,7 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	
 
 
-		<Button className='book-property-btn' variant="primary" onClick={handleShowConfirmation}>
+		<Button className='btn btn-success' variant="primary" onClick={handleShowConfirmation}>
         Book Property
       </Button>
 

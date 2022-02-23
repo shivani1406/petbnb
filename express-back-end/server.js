@@ -284,6 +284,17 @@ App.get("/api/mybookings/:id", (req, res) => {
   });
 });
 
+App.delete("/api/mybookings/delete/:id/:userID", (request, response) => {
+
+  db.query(`DELETE FROM reservations WHERE property_id = $1::integer AND user_id = $2::integer`, [request.params.id, request.params.userID])
+    .then(() => {
+      setTimeout(() => {
+        response.status(204).json({});
+      }, 1000);
+    })
+    .catch(error => console.log(error));
+});
+
 App.get("/api/reservations/:id", (req, res) => {
   
   db.query(
