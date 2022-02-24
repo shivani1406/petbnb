@@ -225,7 +225,9 @@ App.post("/login", (req, res) => {
         console.log(data.rows[0]);
         if (bcrypt.compareSync(password, data.rows[0]["password"])) {
           res.send(data.rows[0]);
-        } 
+        } else {
+          res.send("invalid user");
+        }
       }
       
     })
