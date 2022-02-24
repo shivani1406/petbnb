@@ -15,7 +15,7 @@ const navigate = useNavigate();
 }, []);
 
 const getPropertyDetails = () => {
-	axios.get(`${baseUrl}/api/properties/${id}`) // You can simply make your requests to "/api/whatever you want"
+	axios.get(`${baseUrl}/api/properties/${id}` ) // You can simply make your requests to "/api/whatever you want"
 	.then((response) => {
 		// handle success
 		console.log(response.data) // The entire response from the Rails API
@@ -50,6 +50,24 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 			<h3>{property.location}</h3>
 			<img className='property-details-img' src={property.image} alt = {property.name} />
 				<p className='property-description-p'>{property.description}</p>
+				{property.meal_plan &&  <p><i className="fab fa-gratipay"></i>
+						Meal Plan
+						</p>}
+						{property.pampering_session &&  <p><i className="fab fa-gratipay"></i>
+						Pampering Session
+						</p>}
+						{property.vet_visit &&  <p><i className="fab fa-gratipay"></i>
+						Vet Visits
+						</p>}
+						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay"></i>
+						Daily Hairbrushing
+						</p>}
+						{property.for_dog &&  <p><i className="fab fa-gratipay"></i>
+						For Dogs
+						</p>}
+						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
+						For Cats
+						</p>}
 				
 			
 	  </div>
