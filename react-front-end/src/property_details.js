@@ -42,14 +42,22 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	}
 
   return (
-		<div>
+		<div className='property__details'>
     <div className='property-details-container'> 
       
-
 			<h1>{property.name}</h1>
 			<h3>{property.location}</h3>
-			<img className='property-details-img' src={property.image} alt = {property.name} />
+			<table>
+<tr>
+			<td><img className='property-details-img' src={property.image} alt = {property.name} /></td>
+			<td>
 				<p className='property-description-p'>{property.description}</p>
+				<p><i className="fab fa-gratipay"></i>
+						Room Size {property.room_size} sqft
+						</p>
+						<p><i className="fab fa-gratipay"></i>
+						Price per Night ${property.price_per_night} 
+						</p>
 				{property.meal_plan &&  <p><i className="fab fa-gratipay"></i>
 						Meal Plan
 						</p>}
@@ -68,8 +76,9 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
 						For Cats
 						</p>}
-				
-			
+						</td>
+				</tr>
+			</table>
 	  </div>
 
 	
