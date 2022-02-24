@@ -218,11 +218,16 @@ App.post("/login", (req, res) => {
   console.log(email);
   db.query(`SELECT email, password , name, id, role FROM USERS WHERE EMAIL = $1`, [email])
     .then(data => {
-      if (bcrypt.compareSync(password, data.rows[0]["password"])) {
-        res.send(data.rows[0]);
-      } else {
+      if(data.rows[0] === undefined)
+      {
         res.send("invalid user");
+      } else {
+        console.log(data.rows[0]);
+        if (bcrypt.compareSync(password, data.rows[0]["password"])) {
+          res.send(data.rows[0]);
+        } 
       }
+      
     })
 })
 
