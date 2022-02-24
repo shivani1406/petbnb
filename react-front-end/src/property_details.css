@@ -1,9 +1,14 @@
+.property__details{
+	margin-bottom: 100px;
+}
 .property-details-container {
 	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .property-details-img {
-	max-width: 800px;
+	max-width: 500px;
+	max-height: 500px;
 }
 
 .property-description-p {

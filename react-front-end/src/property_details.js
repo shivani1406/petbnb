@@ -15,7 +15,7 @@ const navigate = useNavigate();
 }, []);
 
 const getPropertyDetails = () => {
-	axios.get(`${baseUrl}/api/properties/${id}`) // You can simply make your requests to "/api/whatever you want"
+	axios.get(`${baseUrl}/api/properties/${id}` ) // You can simply make your requests to "/api/whatever you want"
 	.then((response) => {
 		// handle success
 		console.log(response.data) // The entire response from the Rails API
@@ -42,16 +42,43 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	}
 
   return (
-		<div>
+		<div className='property__details'>
     <div className='property-details-container'> 
       
-
 			<h1>{property.name}</h1>
 			<h3>{property.location}</h3>
-			<img className='property-details-img' src={property.image} alt = {property.name} />
+			<table>
+<tr>
+			<td><img className='property-details-img' src={property.image} alt = {property.name} /></td>
+			<td>
 				<p className='property-description-p'>{property.description}</p>
-				
-			
+				<p><i className="fab fa-gratipay"></i>
+						Room Size {property.room_size} sqft
+						</p>
+						<p><i className="fab fa-gratipay"></i>
+						Price per Night ${property.price_per_night} 
+						</p>
+				{property.meal_plan &&  <p><i className="fab fa-gratipay"></i>
+						Meal Plan
+						</p>}
+						{property.pampering_session &&  <p><i className="fab fa-gratipay"></i>
+						Pampering Session
+						</p>}
+						{property.vet_visit &&  <p><i className="fab fa-gratipay"></i>
+						Vet Visits
+						</p>}
+						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay"></i>
+						Daily Hairbrushing
+						</p>}
+						{property.for_dog &&  <p><i className="fab fa-gratipay"></i>
+						For Dogs
+						</p>}
+						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
+						For Cats
+						</p>}
+						</td>
+				</tr>
+			</table>
 	  </div>
 
 	
