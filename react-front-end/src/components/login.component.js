@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState} from "react";
+import { useAlert } from 'react-alert';
 import { useNavigate} from "react-router-dom";
 import './login.css';
 
@@ -9,7 +10,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
+    const alert = useAlert();
     
     const loginform = (event) => {
         event.preventDefault();
@@ -20,21 +21,28 @@ export default function Login() {
         axios.post('login',  { email, password })
         .then((res) => {
             const user = res.data;
-            localStorage.setItem('user_id',user.id);
-            localStorage.setItem('user_name',user.name);
-            localStorage.setItem('user_role',user.role);
-            console.log(user);
-            if (localStorage.getItem('user_role') === "guest") {
-                navigate(`/mainpage`);
+            if (user.id === undefined) {
+                alert.show('Username or Password do not match !')
             } else {
-                navigate(`/admin`);
-
+                
+                localStorage.setItem('user_id',user.id);
+                localStorage.setItem('user_name',user.name);
+                localStorage.setItem('user_role',user.role);
+                console.log(user);
+                if (localStorage.getItem('user_role') === "guest") {
+                    navigate(`/mainpage`);
+                } else {
+                    navigate(`/admin`);
+    
+                }
             }
+           
          
         }
         ).catch(
             err => {
-                console.log(err);
+                alert.show('Username or Password do not match !')
+                 console.log(err);
             }
         )
     };
