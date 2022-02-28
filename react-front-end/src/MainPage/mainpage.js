@@ -85,7 +85,7 @@ export default function mainpage(){
       </div>
      
       <div className="content_wrapper_map">
-      <SimpleMap locations={locations} />
+      <SimpleMap locations={[properties]} />
       </div>
       </div>
     
