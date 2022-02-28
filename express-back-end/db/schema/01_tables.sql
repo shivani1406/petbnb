@@ -17,6 +17,8 @@ CREATE TABLE properties (
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   location VARCHAR(255),
+  lat VARCHAR(255),
+  lng VARCHAR(255),
   image TEXT,
   property_type VARCHAR(255) NOT NULL,
   check_in_time VARCHAR(255) NOT NULL,
