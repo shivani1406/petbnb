@@ -281,14 +281,34 @@ height: 550px;
   cursor: pointer;
 }
 
+.app_saperator{
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+/* .content_wrapper{
+  width: 100%;
+  height: auto;
+  flex: 50%;
+} */
+
+.content_wrapper_map{
+  width: 100%;
+  height: auto;
+  flex: 50%;
+}
 .app__properties {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 220px 220px 220px 220px;
+  grid-template-columns: 220px 220px ;
   grid-gap: 75px;
   align-items: center;
   margin-bottom: 40px;
   margin-left: 40px;
+  flex: 50%;
 }
 
 .app__admin {
@@ -415,7 +435,12 @@ td button{
 }
 
 .search_page{
+  /* width: 100%;
+  height: auto;
+  margin: auto; */
   background: #eee5e9;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
 }
 
 

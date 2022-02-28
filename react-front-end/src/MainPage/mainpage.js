@@ -2,6 +2,8 @@ import React from 'react'; //optional
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import PropertyTile from '../components/property-tile';
+import SimpleMap from '../simpleMaps';
+const locations = require("../locations.json");
 
 export default function mainpage(){
 
@@ -72,12 +74,21 @@ export default function mainpage(){
         />
         <input className="app__submit" type="submit" value="Search" />
       </form>
+      
+<div className="app_saperator">
 
-      <div className="app__properties">
+
+  <div className="app__properties">
         
         {proper}
         
       </div>
+     
+      <div className="content_wrapper_map">
+      <SimpleMap locations={locations}/>
+      </div>
+      </div>
+    
     </div>);
   }
 

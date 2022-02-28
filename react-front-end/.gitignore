@@ -5,6 +5,7 @@
 .env
 /.pnp
 .pnp.js
+/src/simpleMaps.js
 
 # testing
 /coverage

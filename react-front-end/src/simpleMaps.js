@@ -1,31 +1,54 @@
+
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-
+import pin from "./pin.png";
+import { Link } from "react-router-dom";
+// load .env data into process.env
+require('dotenv').config();
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+const markerStyle = {
+  position: "absolute",
+  top: "100%",
+  left: "50%",
+  transform: "translate(-50%, -100%)"
+};
 
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 60.192059,
+      lng: 24.945831
     },
     zoom: 11
   };
 
   render() {
+    const handleApiLoaded = (map, maps) => {
+      // use map and maps objects
+    };
+    const keys = 'AIzaSyBWci1eP3adwDfCN8AHux4IR4o_OklKEnU';
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
+          bootstrapURLKeys={{
+            key: keys
+          }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
+          {this.props.locations.map(item => {
+            if (item.address.length !== 0) {
+              return item.address.map(i => {
+                return (
+                  <Link to={"/" + item.name} key={i.id} lat={i.lat} lng={i.lng}>
+                    <img style={markerStyle} src={pin} alt="pin" />
+                  </Link>
+                );
+              });
+            }
+          })}
         </GoogleMapReact>
       </div>
     );
