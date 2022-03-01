@@ -7,24 +7,46 @@ const PropertyDetails = () => {
   
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
+	const [images, setimages] = useState([]);
 	const baseUrl = 'http://localhost:8080';
 
 const navigate = useNavigate();
 	useEffect(() => {
 		getPropertyDetails();
+		getImages();
 }, []);
 
 const getPropertyDetails = () => {
-	axios.get(`${baseUrl}/api/properties/${id}` ) // You can simply make your requests to "/api/whatever you want"
+	axios.get(`${baseUrl}/api/properties/${id}` ) 
 	.then((response) => {
-		// handle success
-		console.log(response.data) // The entire response from the Rails API
+	
+		console.log(response.data) 
 
 		setproperty(
 		response.data[0]
 		);
 	}) 
 }
+
+const getImages = () => {
+	axios.get(`${baseUrl}/api/images/${id}` )
+	.then((response) => {
+		
+		console.log(response.data) 
+
+		setimages(
+		response.data
+		);
+	}) 
+}
+
+const imagegrid = images.map((image) => {
+	return (
+		<div>
+		 <img src={image.image_url} alt="" className="grid_image"/>
+		</div>
+	);
+});
 
 const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -47,10 +69,15 @@ const [showConfirmation, setShowConfirmation] = useState(false);
       
 			<h1>{property.name}</h1>
 			<h3>{property.location}</h3>
-			<table>
-<tr>
-			<td><img className='property-details-img' src={property.image} alt = {property.name} /></td>
-			<td>
+			<div class="row">
+  <div class="column">
+			<img className='property-details-img' src={property.image} alt = {property.name} />
+			</div>
+			<div class="column">
+			{imagegrid}
+			</div>
+			</div>
+		
 				<p className='property-description-p'>{property.description}</p>
 				<p><i className="fab fa-gratipay"></i>
 						Room Size {property.room_size} sqft
@@ -76,9 +103,8 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
 						For Cats
 						</p>}
-						</td>
-				</tr>
-			</table>
+					
+			
 	  </div>
 
 	
