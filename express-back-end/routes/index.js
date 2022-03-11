@@ -50,9 +50,13 @@ module.exports = (db,app) => {
   })
   
   app.post("/register", (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, owner } = req.body;
     const hashpassword = bcrypt.hashSync(password, 10);
-    const role = "guest";
+    let role = "guest";
+    if (owner) {
+      role = "owner";
+    }
+    
     const avatar_url = "profile_pic_url";
     db.query(`insert into users (name, email, password, role, avatar_url) values ($1, $2, $3, $4, $5)`, [name, email, hashpassword, role, avatar_url])
       .then(data => {
