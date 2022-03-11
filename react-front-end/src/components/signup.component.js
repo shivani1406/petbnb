@@ -4,30 +4,14 @@ import { useNavigate} from "react-router-dom";
 
 export default function SignUp() {
     const navigate = useNavigate();
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         username: ""
-    //     };
-    // }
+    let owner = false;
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const registerform = (event) => {
         event.preventDefault();
-        // const data = {
-        //     name: this.name,
-        //     email: this.email,
-        //     password: this.password
 
-        // };
-
-        axios.post('http://localhost:8080/register', {name, email, password})
-        // .then(
-        //     res => {
-        //         this.setState({ username: res.data });
-        //         this.props.onUsernameChange(this.state.username);
-        //     }
+        axios.post('http://localhost:8080/register', {name, email, password, owner})
         .then((res) => {
             const user = res.data;
             localStorage.setItem('user_id',user.id);
@@ -48,11 +32,18 @@ export default function SignUp() {
             }
         )
     }
-
     
-        // if (this.state.username) {
-        //     return <Navigate to={'/'} />
-        // }
+    const selectShortlistedApplicant = (e) => {
+        const checked = e.target.checked;
+        if (checked) {
+         console.log("Owner");
+         owner = true;
+        } else {
+         console.log("Guest");
+         owner = false;
+        }
+      };
+    
         return (
             <div className="auth-wrapper">
                 <div className="auth-inner">
@@ -85,6 +76,21 @@ export default function SignUp() {
                                    setPassword(event.target.value);
                                  }} />
                         </div>
+
+                        <div className="form-group">
+                        <fieldset>
+                    
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
+                       onClick={(e) => {
+                        selectShortlistedApplicant(e);
+                    }}
+                      />
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Owner</label>
+                    </div>
+                   
+                  </fieldset>
+                            </div>
                         <br />
 
                         <button type="submit" className="btn btn-dark btn-lg btn-block"  onClick={registerform}>Register</button>
