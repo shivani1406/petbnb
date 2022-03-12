@@ -12,7 +12,7 @@ export default function SignUp() {
     const registerform = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8080/register', {name, email, password, owner})
+        axios.post('http://localhost:8080/register', {name, email, password, owner, avatar})
         .then((res) => {
             const user = res.data;
             localStorage.setItem('user_id',user.id);
