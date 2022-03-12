@@ -8,6 +8,7 @@ export default function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [avatar, setAvatar] = useState("");
     const registerform = (event) => {
         event.preventDefault();
 
@@ -74,6 +75,15 @@ export default function SignUp() {
                                  value={password}
                                  onChange={(event) => {
                                    setPassword(event.target.value);
+                                 }} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Add Avatar</label>
+                            <input type="text" className="form-control" placeholder="Enter url"
+                                 value={avatar}
+                                 onChange={(event) => {
+                                   setAvatar(event.target.value);
                                  }} />
                         </div>
 
