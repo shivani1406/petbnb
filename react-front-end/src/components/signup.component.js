@@ -8,10 +8,11 @@ export default function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [avatar, setAvatar] = useState("");
     const registerform = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8080/register', {name, email, password, owner})
+        axios.post('http://localhost:8080/register', {name, email, password, owner, avatar})
         .then((res) => {
             const user = res.data;
             localStorage.setItem('user_id',user.id);
@@ -49,7 +50,7 @@ export default function SignUp() {
                 <div className="auth-inner">
                     <form >
                         <h3>Register</h3>
-
+                        <img src={avatar} className="propertyTile__img" alt=""/>
                         <div className="form-group">
                             <label>Name</label>
                             <input type="text" className="form-control" placeholder="Enter Name"
@@ -74,6 +75,15 @@ export default function SignUp() {
                                  value={password}
                                  onChange={(event) => {
                                    setPassword(event.target.value);
+                                 }} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Add Avatar</label>
+                            <input type="text" className="form-control" placeholder="Enter url"
+                                 value={avatar}
+                                 onChange={(event) => {
+                                   setAvatar(event.target.value);
                                  }} />
                         </div>
 
