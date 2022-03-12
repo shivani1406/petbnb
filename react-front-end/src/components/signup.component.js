@@ -50,7 +50,7 @@ export default function SignUp() {
                 <div className="auth-inner">
                     <form >
                         <h3>Register</h3>
-
+                        <img src={avatar} className="propertyTile__img" alt=""/>
                         <div className="form-group">
                             <label>Name</label>
                             <input type="text" className="form-control" placeholder="Enter Name"
