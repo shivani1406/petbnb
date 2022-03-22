@@ -22,6 +22,7 @@ import Login from './components/login.component';
 import SignUp from './components/signup.component';
 import PropertyPage from './components/propertyPage';
 import AdminBookings from './components/adminBookings';
+import UserProfile from './components/userProfile';
 class App extends Component {
 
   render() {
@@ -42,6 +43,7 @@ class App extends Component {
             <Route path="/adminBookings/*" element={<AdminBookings />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
             <Route path="/myBookings/" element={<MyBookings />} />
+            <Route path="/userProfile/:id" element={<UserProfile/>} />
           </Routes>
         </BrowserRouter>
         <Footer />

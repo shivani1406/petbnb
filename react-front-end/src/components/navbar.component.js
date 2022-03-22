@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import imageLogo from '../images/petbnb.png';
 import { useNavigate } from "react-router-dom";
+import './Nav.css';
 export default function Nav () {
 
   
@@ -33,7 +34,8 @@ export default function Nav () {
                   onClick={(e) => logOut(e)} >Logout</button>
               </li>
               <li >
-               <a href="/">Welcome {userName} !</a> 
+               <Link to={`/userProfile/${localStorage.getItem('user_id')}`}>Welcome {userName} !
+               </Link> 
                {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                </li>
             </ul>
@@ -58,7 +60,7 @@ export default function Nav () {
                       onClick={(e) => logOut(e)} >Logout</button>
                   </li>
                   <li >
-                   <a href="/">{userName} !</a> 
+                   <a href="/userProfile">{userName} !</a> 
                    {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                    </li>
                 </ul>

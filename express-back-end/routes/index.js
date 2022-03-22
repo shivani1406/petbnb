@@ -71,4 +71,15 @@ module.exports = (db,app) => {
         }
       })
   })
+
+  app.get("/api/profile/:id", (req, res) => {
+    db.query(
+      `
+      SELECT
+        * 
+      FROM users WHERE id = $1::integer;`, [req.params.id])
+      .then(({ rows: users }) => {
+        res.json(users);
+      });
+  });
 };
