@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
+import { useParams } from 'react-router-dom';
 import { useNavigate} from "react-router-dom";
 
 export default function userProfile() {
@@ -9,6 +10,21 @@ export default function userProfile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
+  const baseUrl = 'http://localhost:8080';
+  let {id} = useParams();
+  useEffect(() => {
+    getDetails();
+  }, [])
+  const getDetails = () => {
+    fetch(`${baseUrl}/api/profile/${id}`).then((result) => {
+      result.json().then((resp) => {
+        // setProperties(resp)
+        setName(resp[0].name)
+        setEmail(resp[0].email)
+        setAvatar(resp[0].avatar_url)
+      })
+    })
+  }
   function myFunction() {
     var x = document.getElementById("home");
     var y = document.getElementById("profile");
@@ -30,7 +46,7 @@ export default function userProfile() {
 <button type="button" className="btn btn-outline-secondary" onClick={myFunction}>Credentials</button>
   <div id="home">
      <form >
-      <img src={avatar} className="propertyTile__img" alt=""/>
+      <img src={avatar} className="profile__img" alt=""/>
                         <div className="form-group">
                             <label>Name</label>
                             <input type="text" className="form-control" placeholder="Enter Name"

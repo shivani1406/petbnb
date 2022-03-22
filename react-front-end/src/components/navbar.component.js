@@ -34,7 +34,8 @@ export default function Nav () {
                   onClick={(e) => logOut(e)} >Logout</button>
               </li>
               <li >
-               <a href="/userProfile">Welcome {userName} !</a> 
+               <Link to={`/userProfile/${localStorage.getItem('user_id')}`}>Welcome {userName} !
+               </Link> 
                {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                </li>
             </ul>

@@ -43,7 +43,7 @@ class App extends Component {
             <Route path="/adminBookings/*" element={<AdminBookings />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
             <Route path="/myBookings/" element={<MyBookings />} />
-            <Route path="/userProfile" element={<UserProfile/>} />
+            <Route path="/userProfile/:id" element={<UserProfile/>} />
           </Routes>
         </BrowserRouter>
         <Footer />
