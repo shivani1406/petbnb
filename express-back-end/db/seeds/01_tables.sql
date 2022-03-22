@@ -1,9 +1,9 @@
 -- Users table seeds here (Example)
 INSERT INTO users (name,email,password,role,avatar_url) 
-VALUES ('Shivani','shivani1406sharma@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars1.png'),
-('Priyanka','priyanka.datti@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars2.png'),
-('Najma','najmaduale1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','express-back-end\public\avatars\images\avataaars3.png'),
-('Harry','harry1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','guest','express-back-end\public\avatars\images\avataaars4.png');
+VALUES ('Shivani','shivani1406sharma@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'),
+('Priyanka','priyanka.datti@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'),
+('Najma','najmaduale1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','owner','https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'),
+('Harry','harry1@gmail.com','$2b$10$B9M2tz851vAzdGt5JUei2.tlqkqf.sSaFnxu/uogoNqM0mOd880rS','guest','https://images.unsplash.com/photo-1558898479-33c0057a5d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
 
 
 INSERT INTO properties (owner_id,name,description,location,lat,lng,image,property_type,check_in_time,
