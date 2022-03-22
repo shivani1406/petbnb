@@ -9,13 +9,26 @@ export default function userProfile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
-
+  function myFunction() {
+    var x = document.getElementById("home");
+    var y = document.getElementById("profile");
+    if (x.style.display === "none" && y.style.display === "block") {
+      x.style.display = "block";
+      y.style.display = "none" ;
+    } 
+    else {
+      x.style.display = "none";
+      y.style.display = "block";
+    }
+  }
   return(
 
  
   <div className="_profile">
 <div id="myTabContent" className="tab-content">
-  <div className="tab-pane fade active show" id="home">
+<button type="button" className="btn btn-outline-secondary" onClick={myFunction}>Profile</button>
+<button type="button" className="btn btn-outline-secondary" onClick={myFunction}>Credentials</button>
+  <div id="home">
      <form >
       <img src={avatar} className="propertyTile__img" alt=""/>
                         <div className="form-group">
@@ -49,7 +62,7 @@ export default function userProfile() {
 </form>
                         
   </div>
-  <div className="tab-pane fade" id="profile">
+  <div id="profile">
     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
   </div>
   {/* <div class="tab-pane fade" id="dropdown1">

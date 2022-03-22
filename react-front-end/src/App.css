@@ -253,6 +253,9 @@ height: 550px;
 ._profile{
   margin-top: 90px;
 }
+#profile{
+  display: none;
+}
 .app__admin {
   margin-top: 90px;
   /* margin-bottom: 80px; */
