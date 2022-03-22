@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import imageLogo from '../images/petbnb.png';
 import { useNavigate } from "react-router-dom";
+import './Nav.css';
 export default function Nav () {
 
   

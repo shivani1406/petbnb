@@ -13,31 +13,10 @@ export default function userProfile() {
   return(
 
  
-  <div>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-bs-toggle="tab" href="#home">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="#profile">Change Password</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#"></a>
-  </li>
-  {/* <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </li> */}
-</ul>
-<div id="myTabContent" class="tab-content">
-  <div class="tab-pane fade active show" id="home">
-    <p>  <form >
+  <div className="_profile">
+<div id="myTabContent" className="tab-content">
+  <div className="tab-pane fade active show" id="home">
+     <form >
       <img src={avatar} className="propertyTile__img" alt=""/>
                         <div className="form-group">
                             <label>Name</label>
@@ -65,12 +44,12 @@ export default function userProfile() {
                                    setAvatar(event.target.value);
                                  }} />
                         </div>
-                        <button type="submit" className="btn btn-dark btn-lg btn-block"  onClick={registerform}>Update</button>
+                        <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
 
 </form>
-                        </p>
+                        
   </div>
-  <div class="tab-pane fade" id="profile">
+  <div className="tab-pane fade" id="profile">
     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
   </div>
   {/* <div class="tab-pane fade" id="dropdown1">

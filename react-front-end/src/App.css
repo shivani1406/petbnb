@@ -51,63 +51,7 @@
   text-decoration: none ;
   color: #242323;
 }
-nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	/* z-index: 9999;
-	width: 100%; */
-	height: 65px;
-	background: #FFFFFF;
-	padding: 0px 100px;
-	width: 100%;
-  line-height: 75px;
-	/* height: 40px; */
-	z-index: 1;
-}
-nav .imageLogo{
-  float: left;
-}
-nav ul{
-  float: right;
-}
-nav ul li {
-  display: inline-block;
-  list-style: none;
-}
-nav ul li a{
-  color: #242323;
-  text-shadow: 0 1px 1px #0f0f0f;
-  text-decoration: none;
-  font-size: 16px;
-text-transform: uppercase;
-padding: 0px 20px;
-}
-nav ul li a :hover{
-  color: #232D60;
-}
-nav ul li button{
-  color: #242323;
-  text-shadow: 0 1px 1px #0f0f0f;
-  text-decoration: none;
-  font-size: 18px;
-text-transform: uppercase;
-padding: 0px 32px;
-background: none!important;
-  border: none;
-  padding-top: 1.8vh;
-}
-nav ul li h3{
-  color: #242323;
-  text-shadow: 0 1px 1px #0f0f0f;
-  text-decoration: none;
-  font-size: 18px;
-text-transform: uppercase;
-padding: 0px 32px;
-background: none!important;
-  border: none;
-  padding-top: 1.8vh;
-}
+
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -127,13 +71,7 @@ background: none!important;
   margin-right:0.5vw;
   cursor: pointer;
 }
-.nav--text {
-	float: left;
-	margin-left: 10px;
-	font-size: 1.5em;
-	font-family: "Bungee", cursive;
-	color:#282c34;
-}
+
 
 .btn__text {
 	position: fixed;
@@ -312,7 +250,9 @@ height: 550px;
   margin-left: 40px;
   flex: 50%;
 }
-
+._profile{
+  margin-top: 90px;
+}
 .app__admin {
   margin-top: 90px;
   /* margin-bottom: 80px; */
