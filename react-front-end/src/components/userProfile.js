@@ -44,8 +44,12 @@ export default function userProfile() {
 <div id="myTabContent" className="tab-content">
 <button type="button" className="btn btn-outline-secondary" onClick={myFunction}>Profile</button>
 <button type="button" className="btn btn-outline-secondary" onClick={myFunction}>Credentials</button>
+<div className="auth-wrapper">
+                <div className="auth-inner">
   <div id="home">
      <form >
+     <fieldset>
+       
       <img src={avatar} className="profile__img" alt=""/>
                         <div className="form-group">
                             <label>Name</label>
@@ -58,11 +62,12 @@ export default function userProfile() {
 
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="email" className="form-control" placeholder="Enter email"
+                            <input type="email" className="form-control" placeholder="Enter email" aria-describedby="emailHelp"
                                  value={email}
                                  onChange={(event) => {
                                    setEmail(event.target.value);
                                  }}/>
+                                 <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
 
                         <div className="form-group">
@@ -75,8 +80,9 @@ export default function userProfile() {
                         </div>
                         <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
 
+</fieldset>
 </form>
-                        
+       </div></div>                 
   </div>
   <div id="profile">
     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
