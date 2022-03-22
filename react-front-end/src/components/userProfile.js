@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import { useNavigate} from "react-router-dom";
+import Captcha from "./captcha";
 
 export default function userProfile() {
   const navigate = useNavigate();
@@ -103,6 +104,7 @@ export default function userProfile() {
                                    setPassword(event.target.value);
                                  }} />
                         </div>
+                        <Captcha />
                         <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
                         </fieldset>
                         </div>
