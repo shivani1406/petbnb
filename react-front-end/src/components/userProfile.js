@@ -79,14 +79,42 @@ export default function userProfile() {
                                  }} />
                         </div>
                         <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
-
+                       
 </fieldset>
 </form>
-       </div></div>                 
+
+
+       </div>
+       <div id="profile">
+                        <fieldset>
+  <div className="form-group">
+                            <label>Password</label>
+                            <input type="password" className="form-control" placeholder="Enter password"
+                                 value={password}
+                                 onChange={(event) => {
+                                   setPassword(event.target.value);
+                                 }} />
+                        </div>
+                        <div className="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" className="form-control" placeholder="Enter password"
+                                 value={password}
+                                 onChange={(event) => {
+                                   setPassword(event.target.value);
+                                 }} />
+                        </div>
+                        <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
+                        </fieldset>
+                        </div>
+       </div>   
+                     
   </div>
-  <div id="profile">
-    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-  </div>
+  {/* <div className="auth-wrapper">
+                <div className="auth-inner"> */}
+  
+  
+                
+  {/* </div></div> */}
   {/* <div class="tab-pane fade" id="dropdown1">
     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
   </div> */}
