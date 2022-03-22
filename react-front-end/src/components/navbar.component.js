@@ -33,7 +33,7 @@ export default function Nav () {
                   onClick={(e) => logOut(e)} >Logout</button>
               </li>
               <li >
-               <a href="/">Welcome {userName} !</a> 
+               <a href="/userProfile">Welcome {userName} !</a> 
                {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                </li>
             </ul>
@@ -58,7 +58,7 @@ export default function Nav () {
                       onClick={(e) => logOut(e)} >Logout</button>
                   </li>
                   <li >
-                   <a href="/">{userName} !</a> 
+                   <a href="/userProfile">{userName} !</a> 
                    {/* <Link to={'/login'} className="nav-link">Logout</Link> */}
                    </li>
                 </ul>
