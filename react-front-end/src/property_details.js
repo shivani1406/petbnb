@@ -3,17 +3,23 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './property_details.css';
 import { Button, Modal } from 'react-bootstrap';
+
 const PropertyDetails = () => {
   
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
 	const [images, setimages] = useState([]);
+	const [avgrating, setavgrating] = useState([]);
+	const [ratings, setratings] = useState([]);
+
 	const baseUrl = 'http://localhost:8080';
 
 const navigate = useNavigate();
 	useEffect(() => {
 		getPropertyDetails();
 		getImages();
+		getavgRating();
+		getRating();
 }, []);
 
 const getPropertyDetails = () => {
@@ -23,6 +29,43 @@ const getPropertyDetails = () => {
 		console.log(response.data) 
 
 		setproperty(
+		response.data[0]
+		);
+	}) 
+}
+
+
+
+const getRating = () => {
+	axios.get(`${baseUrl}/api/ratings/${id}` ) 
+	.then((response) => {
+	
+		console.log(response.data) 
+
+		setratings(
+		response.data
+		);
+	}) 
+}
+const ratingDetails = ratings.map((rating) => {
+	return (
+		<div>
+		<img className="user_img" src={rating.avatar_url} /> 
+		{rating.name}
+		<p>
+			{rating.remark}
+		</p>
+				</div>
+	);
+});
+
+const getavgRating = () => {
+	axios.get(`${baseUrl}/api/avg_ratings/${id}` ) 
+	.then((response) => {
+	
+		console.log(response.data) 
+
+		setavgrating(
 		response.data[0]
 		);
 	}) 
@@ -43,7 +86,7 @@ const getImages = () => {
 const imagegrid = images.map((image) => {
 	return (
 		<div>
-		 <img src={image.image_url} alt="" className="grid_image"/>
+		 <img src={image.image_url} alt="" className="grid_image"/> 
 		</div>
 	);
 });
@@ -64,6 +107,7 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	}
 
   return (
+		<div>
 		<div className='property__details'>
     <div className='property-details-container'> 
       
@@ -79,36 +123,39 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 			</div>
 		
 				<p className='property-description-p'>{property.description}</p>
-				<p><i className="fab fa-gratipay"></i>
+				<p><i className="fab fa-gratipay fa-lg"></i>
 						Room Size {property.room_size} sqft
 						</p>
-						<p><i className="fab fa-gratipay"></i>
+						<p><i className="fab fa-gratipay fa-lg"></i>
 						Price per Night ${property.price_per_night} 
 						</p>
-				{property.meal_plan &&  <p><i className="fab fa-gratipay"></i>
+				{property.meal_plan &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Meal Plan
 						</p>}
-						{property.pampering_session &&  <p><i className="fab fa-gratipay"></i>
+						{property.pampering_session &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Pampering Session
 						</p>}
-						{property.vet_visit &&  <p><i className="fab fa-gratipay"></i>
+						{property.vet_visit &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Vet Visits
 						</p>}
-						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay"></i>
+						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Daily Hairbrushing
 						</p>}
-						{property.for_dog &&  <p><i className="fab fa-gratipay"></i>
+						{property.for_dog &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						For Dogs
 						</p>}
-						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
+						{property.for_cats &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						For Cats
 						</p>}
 					
 			
 	  </div>
-
-	
-
+		</div>
+		<i className="fab fa-angellist fa-lg">{avgrating.avg}</i>
+		&nbsp;&nbsp; : {avgrating.count} reviews
+	<div className="user_review">
+{ratingDetails}
+</div>	
 
 		<Button className='btn btn-success' variant="primary" onClick={handleShowConfirmation}>
         Book Property

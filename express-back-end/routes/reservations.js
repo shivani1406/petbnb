@@ -69,4 +69,31 @@ module.exports = (db,app) => {
       res.json(reservations);
     });
   });
+
+  app.get("/api/ratings/:id", (req, res) => {
+    
+    db.query(
+      `
+      SELECT
+        * 
+      FROM ratings join users 
+      ON user_id = users.id
+      WHERE property_id = $1 ;`, [req.params.id])
+      .then(({ rows: ratings }) => {
+      res.json(ratings);
+    });
+  });
+
+  app.get("/api/avg_ratings/:id", (req, res) => {
+    
+    db.query(
+      `
+      SELECT
+      AVG(rating) , count(rating)
+      FROM ratings
+      WHERE property_id = $1 ;`, [req.params.id])
+      .then(({ rows: ratings }) => {
+      res.json(ratings);
+    });
+  });
 };

@@ -160,6 +160,10 @@ height: 550px;
   box-shadow: 2px 2px 26px 0px rgba(0,0,0,0.3);
 }
 
+.fab{
+  width: 40px;
+}
+
 .propertyTile__img {
   /* height: 200px;
   width: 200px; */
