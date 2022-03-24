@@ -8,12 +8,14 @@ const PropertyDetails = () => {
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
 	const [images, setimages] = useState([]);
+	const [avgrating, setavgrating] = useState([]);
 	const baseUrl = 'http://localhost:8080';
 
 const navigate = useNavigate();
 	useEffect(() => {
 		getPropertyDetails();
 		getImages();
+		getavgRating();
 }, []);
 
 const getPropertyDetails = () => {
@@ -23,6 +25,18 @@ const getPropertyDetails = () => {
 		console.log(response.data) 
 
 		setproperty(
+		response.data[0]
+		);
+	}) 
+}
+
+const getavgRating = () => {
+	axios.get(`${baseUrl}/api/avg_ratings/${id}` ) 
+	.then((response) => {
+	
+		console.log(response.data) 
+
+		setavgrating(
 		response.data[0]
 		);
 	}) 
@@ -79,34 +93,37 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 			</div>
 		
 				<p className='property-description-p'>{property.description}</p>
-				<p><i className="fab fa-gratipay"></i>
+				<p><i className="fab fa-gratipay fa-lg"></i>
 						Room Size {property.room_size} sqft
 						</p>
-						<p><i className="fab fa-gratipay"></i>
+						<p><i className="fab fa-gratipay fa-lg"></i>
 						Price per Night ${property.price_per_night} 
 						</p>
-				{property.meal_plan &&  <p><i className="fab fa-gratipay"></i>
+				{property.meal_plan &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Meal Plan
 						</p>}
-						{property.pampering_session &&  <p><i className="fab fa-gratipay"></i>
+						{property.pampering_session &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Pampering Session
 						</p>}
-						{property.vet_visit &&  <p><i className="fab fa-gratipay"></i>
+						{property.vet_visit &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Vet Visits
 						</p>}
-						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay"></i>
+						{property.daily_hairbrushing &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						Daily Hairbrushing
 						</p>}
-						{property.for_dog &&  <p><i className="fab fa-gratipay"></i>
+						{property.for_dog &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						For Dogs
 						</p>}
-						{property.for_cats &&  <p><i className="fab fa-gratipay"></i>
+						{property.for_cats &&  <p><i className="fab fa-gratipay fa-lg"></i>
 						For Cats
 						</p>}
 					
 			
 	  </div>
-
+<div>
+<i className="fab fa-angellist fa-lg">{avgrating.avg}</i>
+: {avgrating.count} reviews
+</div>
 	
 
 
