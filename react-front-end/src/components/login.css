@@ -18,11 +18,19 @@ body, html, .App, #root {
     flex-direction: column;
     text-align: left;
 }
-
+.profile__img {
+    /* height: 200px;
+    width: 200px; */
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    /* object-fit: cover;
+    border-radius: 4px; */
+  }
 .auth-inner {
     width: 450px;
     margin: auto;
-    background: #D29D2B;
+    background: #139487;
     padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;
