@@ -67,6 +67,21 @@ a.book-property-btn {
 	height: 150px;
 	object-fit: cover;
 }
+
+.user_img{
+	width: 28px;
+      height: 28px;
+      margin-right: 0.5rem;
+			border-radius: 16px;
+}
+
+.user_review{
+	margin-top: 40px;
+	flex: 50%;
+	max-width: 100%;
+	/* align-items: left; */
+	column-count: 2;
+}
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
   .column {

@@ -3,12 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './property_details.css';
 import { Button, Modal } from 'react-bootstrap';
+
 const PropertyDetails = () => {
   
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
 	const [images, setimages] = useState([]);
 	const [avgrating, setavgrating] = useState([]);
+	const [ratings, setratings] = useState([]);
+
 	const baseUrl = 'http://localhost:8080';
 
 const navigate = useNavigate();
@@ -16,6 +19,7 @@ const navigate = useNavigate();
 		getPropertyDetails();
 		getImages();
 		getavgRating();
+		getRating();
 }, []);
 
 const getPropertyDetails = () => {
@@ -29,6 +33,31 @@ const getPropertyDetails = () => {
 		);
 	}) 
 }
+
+
+
+const getRating = () => {
+	axios.get(`${baseUrl}/api/ratings/${id}` ) 
+	.then((response) => {
+	
+		console.log(response.data) 
+
+		setratings(
+		response.data
+		);
+	}) 
+}
+const ratingDetails = ratings.map((rating) => {
+	return (
+		<div>
+		<img className="user_img" src={rating.avatar_url} /> 
+		{rating.name}
+		<p>
+			{rating.remark}
+		</p>
+				</div>
+	);
+});
 
 const getavgRating = () => {
 	axios.get(`${baseUrl}/api/avg_ratings/${id}` ) 
@@ -57,7 +86,7 @@ const getImages = () => {
 const imagegrid = images.map((image) => {
 	return (
 		<div>
-		 <img src={image.image_url} alt="" className="grid_image"/>
+		 <img src={image.image_url} alt="" className="grid_image"/> 
 		</div>
 	);
 });
@@ -78,6 +107,7 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	}
 
   return (
+		<div>
 		<div className='property__details'>
     <div className='property-details-container'> 
       
@@ -120,12 +150,12 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 					
 			
 	  </div>
-<div>
-<i className="fab fa-angellist fa-lg">{avgrating.avg}</i>
-: {avgrating.count} reviews
-</div>
-	
-
+		</div>
+		<i className="fab fa-angellist fa-lg">{avgrating.avg}</i>
+		&nbsp;&nbsp; : {avgrating.count} reviews
+	<div className="user_review">
+{ratingDetails}
+</div>	
 
 		<Button className='btn btn-success' variant="primary" onClick={handleShowConfirmation}>
         Book Property
