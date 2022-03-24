@@ -40,3 +40,6 @@ VALUES (3, 'http://critterati.in/wp-content/uploads/2016/02/day-care-1.jpg'),
 
 INSERT INTO reservations (property_id, user_id)
 VALUES (1, 4);
+
+INSERT INTO ratings (property_id, user_id, rating, remark_title, remark)
+VALUES (1, 4, 4.3, "Very Nice Property", "My pet had a great time at the property");

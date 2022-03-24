@@ -46,3 +46,13 @@ CREATE TABLE reservations (
   property_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS ratings CASCADE;
+CREATE TABLE ratings (
+  id SERIAL PRIMARY KEY NOT NULL,
+  property_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  rating FLOAT NOT NULL,
+  remark_title TEXT,
+  remark TEXT
+)
