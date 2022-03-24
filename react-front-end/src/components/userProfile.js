@@ -10,11 +10,13 @@ export default function userProfile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [avatar, setAvatar] = useState("");
   const baseUrl = 'http://localhost:8080';
   let {id} = useParams();
   useEffect(() => {
-    getDetails();
+     getDetails();
   }, [])
   const getDetails = () => {
     fetch(`${baseUrl}/api/profile/${id}`).then((result) => {
@@ -26,6 +28,16 @@ export default function userProfile() {
       })
     })
   }
+
+  const handleValidation= (evnt)=>{
+    if(passwordConfirm!==password)
+    {
+    setConfirmPasswordError("Confirm password is not matched");
+    }else{
+    setConfirmPasswordError("");
+    }
+  }
+
   function myFunction() {
     var x = document.getElementById("home");
     var y = document.getElementById("profile");
@@ -87,6 +99,7 @@ export default function userProfile() {
 
        </div>
        <div id="profile">
+         <form>
                         <fieldset>
   <div className="form-group">
                             <label>Password</label>
@@ -98,15 +111,18 @@ export default function userProfile() {
                         </div>
                         <div className="form-group">
                             <label>Confirm Password</label>
-                            <input type="password" className="form-control" placeholder="Enter password"
-                                 value={password}
+                            <input type="password" className="form-control" placeholder="Enter password" onKeyUp={handleValidation}
+                                 value={passwordConfirm}
                                  onChange={(event) => {
-                                   setPassword(event.target.value);
+                                   
+                                   setConfirmPassword(event.target.value);
                                  }} />
+                                 <p className="text-danger">{confirmPasswordError}</p>
                         </div>
                         <Captcha />
                         <button type="submit" className="btn btn-dark btn-lg btn-block"  >Update</button>
                         </fieldset>
+                        </form>
                         </div>
        </div>   
                      

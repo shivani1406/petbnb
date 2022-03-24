@@ -3,8 +3,7 @@ import captchaImg from './captcha.jpg';
 // import studentIMG from './2.png';
 import React, { useState, useEffect } from 'react';
 
-function Captcha() {
-
+export default function Captcha() {
   const [user, setUser] = useState({
       username:""
   });
@@ -24,6 +23,7 @@ function Captcha() {
    const captcha = generateString(6) // Function called here and save in captcha variable
 
    let handleChange = (e) => {
+     e.preventDefault();
      let name = e.target.name;
      let value = e.target.value;
      user[name] = value;
@@ -82,11 +82,10 @@ function Captcha() {
               <input type="text" id="inputType" className="form-control"placeholder="Enter Captcha"
                 name="username"  onChange={handleChange} autocomplete="off" style={{width:"60%"}}
                 />
-              <button type="button" id="succesBTN" onClick={onSubmit} class="btn btn-primary ml-1">Verify Captcha</button>
+              {/* <button type="button" id="succesBTN" onClick={onSubmit} class="btn btn-primary ml-1">Verify Captcha</button> */}
             
             
         </div>
            
     );
 }
-export default Captcha;
