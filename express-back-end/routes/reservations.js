@@ -76,7 +76,8 @@ module.exports = (db,app) => {
       `
       SELECT
         * 
-      FROM ratings
+      FROM ratings join users 
+      ON user_id = users.id
       WHERE property_id = $1 ;`, [req.params.id])
       .then(({ rows: ratings }) => {
       res.json(ratings);
