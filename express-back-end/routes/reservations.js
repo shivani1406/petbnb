@@ -69,4 +69,17 @@ module.exports = (db,app) => {
       res.json(reservations);
     });
   });
+
+  app.get("/api/ratings/:id", (req, res) => {
+    
+    db.query(
+      `
+      SELECT
+        * 
+      FROM ratings
+      WHERE property_id = $1 ;`, [req.params.id])
+      .then(({ rows: ratings }) => {
+      res.json(ratings);
+    });
+  });
 };
