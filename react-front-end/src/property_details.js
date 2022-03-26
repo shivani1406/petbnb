@@ -156,6 +156,10 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	<div className="user_review">
 {ratingDetails}
 </div>	
+<div className="form-floating">
+  <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
 
 		<Button className='btn btn-success' variant="primary" onClick={handleShowConfirmation}>
         Book Property
