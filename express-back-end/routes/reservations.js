@@ -84,6 +84,31 @@ module.exports = (db,app) => {
     });
   });
 
+  app.post("/api/ratings/:id", (request, response) => {
+  
+    const rating = request.body.stars;
+    const remark_title = request.body.ratingtitle;
+    const remark = request.body.ratingreview;
+    const owner_id = request.body.owner_id;  
+    db.query(
+      `
+      INSERT INTO ratings (property_id,
+      user_id,
+      rating,
+      remark_title,
+      remark) VALUES ($1::integer, $2::integer, $3::float, $4::text, $5::text)
+    `,
+      [request.params.id, owner_id, rating, remark_title, remark]
+    )
+      .then(() => {
+        setTimeout(() => {
+          response.status(204).json({});
+          // updateAppointment(Number(request.params.id), request.body.interview);
+        }, 1000);
+      })
+      .catch(error => console.log(error));
+  });
+
   app.get("/api/avg_ratings/:id", (req, res) => {
     
     db.query(
