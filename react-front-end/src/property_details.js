@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { useParams, useNavigate } from "react-router-dom";
+import { useAlert } from 'react-alert';
 import axios from 'axios';
 import './property_details.css';
 import { Button, Modal } from 'react-bootstrap';
@@ -11,7 +12,7 @@ const PropertyDetails = () => {
 		console.log(newRating);
 		setstars(newRating);
 	}
-  
+	const alert = useAlert();
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
 	const [images, setimages] = useState([]);
@@ -44,7 +45,19 @@ const getPropertyDetails = () => {
 }
 
 const submitRating = () => {
-	
+	const owner_id = localStorage.getItem('user_id');
+	const userObject = {owner_id, stars, ratingtitle, ratingreview};
+	const baseUrl = 'http://localhost:8080';
+      axios.post(`${baseUrl}/api/ratings/${id}`, userObject)
+          .then((res) => {
+            alert.show('Review Added Successfully!')
+						setratingreview("");
+						setratingtitle("");
+						setstars("");
+       navigate(`/propertyDetails/${id}`);
+          }).catch((error) => {
+              console.log(error)
+          });
 }
 
 
