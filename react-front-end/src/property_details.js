@@ -158,9 +158,13 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 </div>	
 <div className="auth-wrapper">
                 <div className="auth-inner">
+								<div className="form-floating">
+  <input type="text" className="form-control" placeholder="Leave a comment here" id="floatingTexttitle"/>
+  <label for="floatingTexttitle">Add a headline</label>
+</div>
 <div className="form-floating">
   <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-  <label for="floatingTextarea">Comments</label>
+  <label for="floatingTextarea">Review</label>
 </div>
 </div></div>
 
