@@ -3,8 +3,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './property_details.css';
 import { Button, Modal } from 'react-bootstrap';
+import ReactStars from 'react-stars'
 
 const PropertyDetails = () => {
+
+	const ratingChanged = (newRating) => {
+		console.log(newRating)
+	}
   
   let { id } = useParams();
 	const [property, setproperty] = useState([]);
@@ -91,6 +96,8 @@ const imagegrid = images.map((image) => {
 	);
 });
 
+
+
 const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleCloseConfirmation = () => {
@@ -156,8 +163,14 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 	<div className="user_review">
 {ratingDetails}
 </div>	
+
 <div className="auth-wrapper">
                 <div className="auth-inner">
+								<ReactStars
+  count={5}
+  onChange={ratingChanged}
+  size={24}
+  color2={'#ffd700'} />
 								<div className="form-floating">
   <input type="text" className="form-control" placeholder="Leave a comment here" id="floatingTexttitle"/>
   <label for="floatingTexttitle">Add a headline</label>
