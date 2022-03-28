@@ -8,7 +8,8 @@ import ReactStars from 'react-stars'
 const PropertyDetails = () => {
 
 	const ratingChanged = (newRating) => {
-		console.log(newRating)
+		console.log(newRating);
+		setstars(newRating);
 	}
   
   let { id } = useParams();
@@ -16,6 +17,9 @@ const PropertyDetails = () => {
 	const [images, setimages] = useState([]);
 	const [avgrating, setavgrating] = useState([]);
 	const [ratings, setratings] = useState([]);
+	const [stars, setstars] = useState([]);
+	const [ratingtitle, setratingtitle] = useState([]);
+	const [ratingreview, setratingreview] = useState([]);
 
 	const baseUrl = 'http://localhost:8080';
 
@@ -39,6 +43,9 @@ const getPropertyDetails = () => {
 	}) 
 }
 
+const submitRating = () => {
+	
+}
 
 
 const getRating = () => {
@@ -170,15 +177,21 @@ const [showConfirmation, setShowConfirmation] = useState(false);
   count={5}
   onChange={ratingChanged}
   size={24}
-  color2={'#ffd700'} />
+  color2={'#ffd700'} 
+	value={stars}
+	/>
 								<div className="form-floating">
-  <input type="text" className="form-control" placeholder="Leave a comment here" id="floatingTexttitle"/>
+  <input type="text" className="form-control" placeholder="Leave a comment here" id="floatingTexttitle" value={ratingtitle} onChange={(e)=>{setratingtitle(e.target.value)}}/>
   <label for="floatingTexttitle">Add a headline</label>
 </div>
 <div className="form-floating">
-  <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+	value={ratingreview} onChange={(e)=>{setratingreview(e.target.value)}}></textarea>
   <label for="floatingTextarea">Review</label>
 </div>
+<Button className='btn btn-success' variant="primary" onClick={submitRating}>
+        Submit
+      </Button>
 </div></div>
 
 		<Button className='btn btn-success' variant="primary" onClick={handleShowConfirmation}>
