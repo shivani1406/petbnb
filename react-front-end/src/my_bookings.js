@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './my_bookings.css';
 import { Table, Modal, Button } from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 
 const MyBookings = () => {
 
@@ -60,6 +60,9 @@ const MyBookings = () => {
 			<td><Button className='btn btn-danger' variant="danger" onClick={ () => handleCancelBooking(property.property_id) }>
         Cancel
       </Button></td>
+			<td>
+			<Link to={'/Messages'} >Chat Message</Link>
+			</td>
     </tr>
 
 			
@@ -78,6 +81,7 @@ const MyBookings = () => {
       <th>Location</th>
       <th>Price/night</th>
 			<th>Cancel Booking</th>
+			<th>Message</th>
     </tr>
   </thead>
   <tbody>
