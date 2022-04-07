@@ -14,9 +14,6 @@ const MyBookings = () => {
 	const getBookedProperties = () => {
 		axios.get(`${baseUrl}/api/mybookings/${user_id}`) 
 		.then((response) => {
-		
-			//console.log(response.data) 
-
 			setproperties(
 			response.data
 			);
@@ -61,7 +58,7 @@ const MyBookings = () => {
         Cancel
       </Button></td>
 			<td>
-			<Link to={'/Messages'} >Chat Message</Link>
+			<Link to={`/Messages/${property.id}`} >Chat Message</Link>
 			</td>
     </tr>
 
