@@ -29,6 +29,8 @@ module.exports = (db,app) => {
     db.query(
       `
       SELECT
+        reservations.id,
+        owner_id,
         property_id,
         user_id,
         properties.name,

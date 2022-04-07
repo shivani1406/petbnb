@@ -9,6 +9,7 @@ import Admin from './Admin/admin';
 import CreateProperty from './create_property';
 import Footer from './Footer';
 import history from './history';
+import Messages from './components/messages';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 //import 'bootstrap/dist/js/bootstrap.min.js'
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/propertyDetails/:id" element={<PropertyDetails />} />
             <Route path="/myBookings/" element={<MyBookings />} />
             <Route path="/userProfile/:id" element={<UserProfile/>} />
+            <Route path="/Messages/:id" element={<Messages/>} />
           </Routes>
         </BrowserRouter>
         <Footer />

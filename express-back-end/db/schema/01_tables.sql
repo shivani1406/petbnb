@@ -55,4 +55,13 @@ CREATE TABLE ratings (
   rating FLOAT NOT NULL,
   remark_title TEXT,
   remark TEXT
-)
+);
+
+DROP TABLE IF EXISTS messages CASCADE;
+CREATE TABLE messages (
+  id SERIAL PRIMARY KEY NOT NULL,
+  reservation_id INTEGER REFERENCES reservations(id) on DELETE CASCADE,
+  message_by INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  message_text TEXT,
+  created_on TIMESTAMP
+);
