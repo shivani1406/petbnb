@@ -40,11 +40,13 @@ const indexRoutes = require("./routes/index");
 const propertiesRoutes = require("./routes/properties");
 const imagesRoutes = require("./routes/images");
 const reservationsRoutes = require("./routes/reservations");
+const messagesRoute = require("./routes/messages");
 
 indexRoutes(db,App);
 propertiesRoutes(db,App);
 imagesRoutes(db, App);
 reservationsRoutes(db,App);
+messagesRoute(db,App);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
