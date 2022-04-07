@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react'; 
-
+import { useParams, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import Input from './input';
 import './messages.css';
 const Messages = () => {
-
+  const baseUrl = 'http://localhost:8080';
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
+  let { id } = useParams();
   const sendMessage = (event) => {
     event.preventDefault();
 
     if(message) {
-      // socket.emit('sendMessage', message, () => setMessage(''));
+      const user_id = localStorage.getItem('user_id');
+	    const userObject = {user_id, message};
+      axios.post(`${baseUrl}/api/messages/${id}`, userObject)
+          .then((res) => {
+           console.log("message saved");
+           setMessage("");
+          }).catch((error) => {
+              console.log(error)
+          });
     }
   }
 
