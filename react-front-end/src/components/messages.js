@@ -3,11 +3,32 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Input from './input';
 import './messages.css';
+import Chats from './Chats/chats';
+
 const Messages = () => {
   const baseUrl = 'http://localhost:8080';
+
+  const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+
   let { id } = useParams();
+
+  useEffect(() => {
+    getMessages();
+  }, [])
+
+  const getMessages = () => {
+    fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
+      result.json().then((resp) => {
+        // setProperties(resp)
+        setName(localStorage.getItem('user_name'));
+        console.log(resp);
+        setMessages(resp);
+      })
+    })
+  }
+
   const sendMessage = (event) => {
     event.preventDefault();
 
@@ -28,8 +49,8 @@ const Messages = () => {
     <div className="app__searchForm">
       <div className="outerContainer">
       <div className="container">
-          {/* <InfoBar room={room} />
-          <Messages messages={messages} name={name} />*/}
+          {/* <InfoBar room={room} />*/}
+          <Chats messages={messages} name={name} />
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> 
       </div>
       {/* <TextContainer users={users}/> */}

@@ -24,4 +24,21 @@ module.exports = (db,app) => {
       })
       
   })
+
+  app.get("/api/messages/:id", (req, res) => {
+    db.query(
+      `
+      SELECT
+      message_text, users.name as user_name
+      FROM messages JOIN reservations 
+      ON reservation_id = reservations.id
+      JOIN users ON message_by = users.id
+      WHERE reservation_id = $1
+      ORDER BY created_on
+      ;
+    `,[req.params.id]
+    ).then(({ rows: messages }) => {
+      res.json(messages);
+    });
+  });
 }

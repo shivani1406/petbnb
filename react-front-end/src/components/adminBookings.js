@@ -1,6 +1,8 @@
 import React from 'react'; //optional
 import { useState , useEffect} from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 export default function adminBookings(){
    
       const [properties, setproperties] = useState([]);
@@ -32,6 +34,9 @@ export default function adminBookings(){
            <td>
              {property.user_name}
            </td>
+           <td>
+			<Link to={`/Messages/${property.property_id}`} >Chat Message</Link>
+			</td>
          </tr>
           
         );
@@ -46,6 +51,7 @@ export default function adminBookings(){
         <th>Image</th>
         <th>Property Name/ Details</th>
         <th>Guest Name</th>
+        <td>Chat Messages</td>
         </tr>
         </thead>
         <tbody>
