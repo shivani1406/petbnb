@@ -45,6 +45,14 @@ const Messages = () => {
     }
   }
 
+  const wsURL = 'ws://localhost:8080';
+   //Websocket set up
+   const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+   socket.onopen = () => {
+     console.log("Web socket opened");
+     socket.send("Ping...");
+   };
+
   return(
     <div className="app__searchForm">
       <div className="outerContainer">
