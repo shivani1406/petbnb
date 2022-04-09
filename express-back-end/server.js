@@ -14,9 +14,9 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
 
-const server = require("http").Server(App);
-const WebSocket = require("ws");
-const wss = new WebSocket.Server({ server });
+const WebSocket = require('ws');
+
+const wss = new WebSocket.Server({ port: 8081 });
 
 wss.on("connection", socket => {
   socket.onmessage = event => {
