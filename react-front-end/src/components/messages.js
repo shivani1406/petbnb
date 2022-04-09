@@ -15,20 +15,33 @@ const Messages = () => {
 
   let { id } = useParams();
 
-  useEffect(() => {
-    ws.onmessage = (e) => {
-      const message = JSON.parse(e.data);
-      setMessages([message, ...messages]);
+  useEffect(
+    () => {
+    ws.onopen = () => {
+      console.log('WebSocket Connected');
     }
+
+    ws.onmessage = (e) => {
+      // const message = JSON.parse(e.data);
+      // setMessages([message, ...messages]);
+    }
+    
     getMessages();
-  }, [ws.onmessage,messages])
+
+    return () => {
+      ws.onclose = () => {
+        console.log('WebSocket Disconnected');
+        setWs(new WebSocket(process.env.REACT_APP_WEBSOCKET_URL));
+      }
+    }
+  }, [ws.onmessage, ws.onopen, ws.onclose, messages])
 
   const getMessages = () => {
     fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
       result.json().then((resp) => {
         // setProperties(resp)
         setName(localStorage.getItem('user_name'));
-        console.log(resp);
+        // console.log(resp);
         setMessages(resp);
       })
     })
@@ -52,12 +65,12 @@ const Messages = () => {
     }
   }
 
-   //Websocket set up
-   const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
-   socket.onopen = () => {
-     console.log("Web socket opened");
-     socket.send("Ping...");
-   };
+  //  //Websocket set up
+  //  const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+  //  socket.onopen = () => {
+  //    console.log("Web socket opened");
+  //    socket.send("Ping...");
+  //  };
 
   return(
     <div className="app__searchForm">
