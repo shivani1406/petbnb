@@ -45,7 +45,6 @@ const Messages = () => {
     }
   }
 
-  const wsURL = 'ws://localhost:8080';
    //Websocket set up
    const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
    socket.onopen = () => {
