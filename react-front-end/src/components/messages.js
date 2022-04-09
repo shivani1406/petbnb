@@ -11,12 +11,17 @@ const Messages = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [ws, setWs] = useState(new WebSocket(process.env.REACT_APP_WEBSOCKET_URL));
 
   let { id } = useParams();
 
   useEffect(() => {
+    ws.onmessage = (e) => {
+      const message = JSON.parse(e.data);
+      setMessages([message, ...messages]);
+    }
     getMessages();
-  }, [])
+  }, [ws.onmessage,messages])
 
   const getMessages = () => {
     fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
@@ -31,19 +36,28 @@ const Messages = () => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-
+    
     if(message) {
+      ws.send(JSON.stringify(message));
       const user_id = localStorage.getItem('user_id');
 	    const userObject = {user_id, message};
       axios.post(`${baseUrl}/api/messages/${id}`, userObject)
           .then((res) => {
            console.log("message saved");
            setMessage("");
+          //  window.location.reload();
           }).catch((error) => {
               console.log(error)
           });
     }
   }
+
+   //Websocket set up
+   const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+   socket.onopen = () => {
+     console.log("Web socket opened");
+     socket.send("Ping...");
+   };
 
   return(
     <div className="app__searchForm">

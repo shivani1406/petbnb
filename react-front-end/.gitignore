@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-.env
+.env.development
 /.pnp
 .pnp.js
 src/simpleMaps.js

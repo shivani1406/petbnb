@@ -14,6 +14,20 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
 
+const WebSocket = require('ws');
+
+const wss = new WebSocket.Server({ port: 8081 });
+
+wss.on("connection", socket => {
+  socket.onmessage = event => {
+    console.log(`Message Received: ${event.data}`);
+
+    if (event.data === "ping") {
+      socket.send(JSON.stringify("pong"));
+    }
+  };
+});
+
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const { request, response } = require("express");
