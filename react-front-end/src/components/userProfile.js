@@ -1,12 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
-import { useNavigate} from "react-router-dom";
+// import { useNavigate} from "react-router-dom";
 import Captcha from "./captcha";
 
 export default function userProfile() {
-  const navigate = useNavigate();
-  let owner = false;
+  // const navigate = useNavigate();
+  // let owner = false;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

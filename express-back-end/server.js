@@ -18,14 +18,15 @@ const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 8081 });
 
-wss.on("connection", socket => {
-  socket.onmessage = event => {
-    console.log(`Message Received: ${event.data}`);
-
-    if (event.data === "ping") {
-      socket.send(JSON.stringify("pong"));
-    }
-  };
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(data) {
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data);
+        // console.log('data', data);
+      }
+    });
+  });
 });
 
 const { Pool } = require("pg");

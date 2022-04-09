@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import PropertyTile from '../components/property-tile';
 import SimpleMap from '../simpleMaps';
-const locations = require("../locations.json");
+// const locations = require("../locations.json");
 
 export default function mainpage(){
 
