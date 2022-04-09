@@ -75,7 +75,7 @@ const getRating = () => {
 const ratingDetails = ratings.map((rating) => {
 	return (
 		<div>
-		<img className="user_img" src={rating.avatar_url} /> 
+		<img className="user_img" src={rating.avatar_url} alt="" /> 
 		{rating.name}
 		<p>
 			{rating.remark}

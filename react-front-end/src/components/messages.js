@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import axios from 'axios';
 import Input from './input';
 import './messages.css';
@@ -17,6 +17,16 @@ const Messages = () => {
 
   useEffect(
     () => {
+      Promise.all([
+        axios.get(`${baseUrl}/api/messages/${id}`)
+      ]).then((resp) => {
+          // setProperties(resp)
+          setName(localStorage.getItem('user_name'));
+          // console.log(resp);
+          setMessages(resp[0].data);
+        
+      
+
     ws.onopen = () => {
       console.log('WebSocket Connected');
     }
@@ -26,26 +36,29 @@ const Messages = () => {
       // setMessages([message, ...messages]);
     }
     
-    getMessages();
+    // getMessages();
 
     return () => {
       ws.onclose = () => {
         console.log('WebSocket Disconnected');
         setWs(new WebSocket(process.env.REACT_APP_WEBSOCKET_URL));
       }
-    }
-  }, [ws.onmessage, ws.onopen, ws.onclose, messages])
+    } });
+  }, [ws.onmessage, ws.onopen, ws.onclose])
 
-  const getMessages = () => {
-    fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
-      result.json().then((resp) => {
-        // setProperties(resp)
-        setName(localStorage.getItem('user_name'));
-        // console.log(resp);
-        setMessages(resp);
-      })
-    })
-  }
+
+  
+
+  // const getMessages = () => {
+  //   fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
+  //     result.json().then((resp) => {
+  //       // setProperties(resp)
+  //       setName(localStorage.getItem('user_name'));
+  //       // console.log(resp);
+  //       setMessages(resp);
+  //     })
+  //   })
+  // }
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -64,13 +77,6 @@ const Messages = () => {
           });
     }
   }
-
-  //  //Websocket set up
-  //  const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
-  //  socket.onopen = () => {
-  //    console.log("Web socket opened");
-  //    socket.send("Ping...");
-  //  };
 
   return(
     <div className="app__searchForm">

@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import captchaImg from './captcha.jpg';
 // import studentIMG from './2.png';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 export default function Captcha() {
   const [user, setUser] = useState({
@@ -30,53 +30,53 @@ export default function Captcha() {
      setUser(user);
   }
 
-  const onSubmit = e => {
+  // const onSubmit = e => {
 
-    var element =  document.getElementById("succesBTN");
-    var inputData = document.getElementById("inputType");
-     element.style.cursor = "wait";
-     element.innerHTML  = "Checking...";
-     inputData.disabled = true;
-     element.disabled = true;
+  //   var element =  document.getElementById("succesBTN");
+  //   var inputData = document.getElementById("inputType");
+  //    element.style.cursor = "wait";
+  //    element.innerHTML  = "Checking...";
+  //    inputData.disabled = true;
+  //    element.disabled = true;
 
-      var myFunctions = function(){
-          if(captcha == user.username)
-          {
-            element.style.backgroundColor   = "green";
-            element.innerHTML  = "Captcha Verified";
-            element.disabled = true;
-            element.style.cursor = "not-allowed";
-            inputData.style.display = "none";
+  //     var myFunctions = function(){
+  //         if(captcha == user.username)
+  //         {
+  //           element.style.backgroundColor   = "green";
+  //           element.innerHTML  = "Captcha Verified";
+  //           element.disabled = true;
+  //           element.style.cursor = "not-allowed";
+  //           inputData.style.display = "none";
             
-          }
-          else
-          {
-            element.style.backgroundColor   = "red";
-            element.style.cursor = "not-allowed";
-            element.innerHTML  = "Not Matched";
-            element.disabled = true;
-            //  element.disabled = true;
+  //         }
+  //         else
+  //         {
+  //           element.style.backgroundColor   = "red";
+  //           element.style.cursor = "not-allowed";
+  //           element.innerHTML  = "Not Matched";
+  //           element.disabled = true;
+  //           //  element.disabled = true;
 
-            var myFunction = function(){
-              element.style.backgroundColor   = "#007bff";
-              element.style.cursor = "pointer";
-              element.innerHTML  = "Verify Captcha";
-              element.disabled = false;
-              inputData.disabled = false;
-              inputData.value ='sssss';
-            };
-            setTimeout(myFunction,5000);
-          }
-        }   
-        setTimeout(myFunctions,5000); 
-  };
+  //           var myFunction = function(){
+  //             element.style.backgroundColor   = "#007bff";
+  //             element.style.cursor = "pointer";
+  //             element.innerHTML  = "Verify Captcha";
+  //             element.disabled = false;
+  //             inputData.disabled = false;
+  //             inputData.value ='sssss';
+  //           };
+  //           setTimeout(myFunction,5000);
+  //         }
+  //       }   
+  //       setTimeout(myFunctions,5000); 
+  // };
   
    return (
     
       <div>
             <h4 id="captcha" style={{ marginTop:"30px",marginLeft:"25px",position:"absolute"}}>{captcha}</h4>
 
-              <img src={captchaImg} className="mt-3 mb-3" height="50"/> 
+              <img src={captchaImg} className="mt-3 mb-3" height="50" alt=""/> 
             
 
               <input type="text" id="inputType" className="form-control"placeholder="Enter Captcha"
