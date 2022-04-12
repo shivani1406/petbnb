@@ -36,7 +36,6 @@ const Messages = () => {
       // setMessages([message, ...messages]);
     }
     
-    // getMessages();
 
     return () => {
       ws.onclose = () => {
@@ -46,19 +45,6 @@ const Messages = () => {
     } });
   }, [ws.onmessage, ws.onopen, ws.onclose])
 
-
-  
-
-  // const getMessages = () => {
-  //   fetch(`${baseUrl}/api/messages/${id}`).then((result) => {
-  //     result.json().then((resp) => {
-  //       // setProperties(resp)
-  //       setName(localStorage.getItem('user_name'));
-  //       // console.log(resp);
-  //       setMessages(resp);
-  //     })
-  //   })
-  // }
 
   const sendMessage = (event) => {
     event.preventDefault();
