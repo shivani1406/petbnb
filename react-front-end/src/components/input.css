@@ -70,9 +70,9 @@ input:focus, textarea:focus, select:focus{
   height: 100%;
 }
 .microphone-status {
-  font-size: 22px;
-  margin-right: 20px;
-  min-width: 215px;
+  font-size: 12px;
+  margin-right: 2px;
+  min-width: 15px;
 }
 .btn {
   border: none;
