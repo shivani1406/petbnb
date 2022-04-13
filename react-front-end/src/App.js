@@ -3,27 +3,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import HomePage from './HomePage';
 import MainPage from './MainPage/mainpage';
-import PropertyDetails from './property_details';
-import MyBookings from './my_bookings.js';
-import Admin from './Admin/admin';
-import CreateProperty from './create_property';
+import PropertyDetails from './components/property/property_details';
+import MyBookings from './components/User/my_bookings.js';
+import Admin from './components/Admin/admin';
+import CreateProperty from './components/property/create_property';
 import Footer from './Footer';
 import history from './history';
-import Messages from './components/messages';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-//import 'bootstrap/dist/js/bootstrap.min.js'
-//import 'jquery';
-//import '@popperjs/core'; 
-//import 'bootstrap/dist/js/bootstrap.bundle';
+import Messages from './components/Chats/messages';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Nav from "./components/navbar.component";
-import Login from './components/login.component';
-import SignUp from './components/signup.component';
-import PropertyPage from './components/propertyPage';
-import AdminBookings from './components/adminBookings';
-import UserProfile from './components/userProfile';
+import Login from './components/User/login.component';
+import SignUp from './components/User/signup.component';
+import PropertyPage from './components/property/propertyPage';
+import AdminBookings from './components/Admin/adminBookings';
+import UserProfile from './components/User/userProfile';
 class App extends Component {
 
   render() {

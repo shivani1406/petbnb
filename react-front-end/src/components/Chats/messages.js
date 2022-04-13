@@ -3,7 +3,7 @@ import { useParams} from "react-router-dom";
 import axios from 'axios';
 import Input from './input';
 import './messages.css';
-import Chats from './Chats/chats';
+import Chats from './chats';
 
 const Messages = () => {
   const baseUrl = 'http://localhost:8080';
