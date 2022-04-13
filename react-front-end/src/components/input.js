@@ -22,10 +22,11 @@ const Input = ({ setMessage, sendMessage, message }) => {
       continuous: true,
     });
   };
-  const stopHandle = () => {
+  const stopHandle = (e) => {
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
+    sendMessage(e)
   };
   const handleReset = () => {
     stopHandle();
@@ -61,28 +62,21 @@ const Input = ({ setMessage, sendMessage, message }) => {
   //   onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
   // />
   // }
+  if(transcript) {
+    message = String(transcript);
+  }
   
 
   return (
   <form className="form">
-     {
-       transcript? 
-       <input
-  className="input"
-  type="text"
-  placeholder="Type a message..."
-  value={transcript}
-  onChange={({ target: { value } }) => setMessage(value)}
-  onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-/> : <input
+        <input
   className="input"
   type="text"
   placeholder="Type a message..."
   value={message}
   onChange={({ target: { value } }) => setMessage(value)}
   onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-/>
-     }
+/>  
 
 
      <div>
@@ -98,10 +92,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
         </div>
         {isListening && (
           <button className="microphone-stop btn" onClick={(e) => { 
-            // e.preventDefault();
-            setIsListening(false);
-          SpeechRecognition.stopListening();
-        sendMessage(e);}
+            stopHandle(e);}
           }>
             Stop
           </button>
