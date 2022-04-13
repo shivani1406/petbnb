@@ -1,7 +1,7 @@
 import React from 'react'; //optional
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import PropertyTile from '../components/property-tile';
+import PropertyTile from '../components/property/property-tile';
 import SimpleMap from '../simpleMaps';
 // const locations = require("../locations.json");
 

@@ -32,36 +32,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
     stopHandle();
     resetTranscript();
   };
-//   let input_text = <input
-//   className="input"
-//   type="text"
-//   placeholder="Type a message..."
-//   value={message}
-//   onChange={({ target: { value } }) => setMessage(value)}
-//   onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-// />;
 
-  // if(transcript)
-  // {
-  //   message = transcript;
-  //  input_text= <input
-  //     className="input"
-  //     type="text"
-  //     placeholder="Type a message..."
-  //     value={message}
-  //     onChange={({ target: { value } }) => setMessage(value)}
-  //     onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-  //   />
-  // } else {
-  //   input_text = <input
-  //   className="input"
-  //   type="text"
-  //   placeholder="Type a message..."
-  //   value={message}
-  //   onChange={({ target: { value } }) => setMessage(value)}
-  //   onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-  // />
-  // }
   if(transcript) {
     message = String(transcript);
   }
