@@ -240,14 +240,7 @@ input{
   height: auto;
   margin: auto;
   display: flex;
-  /* flex-wrap: wrap; */
 }
-
-/* .content_wrapper{
-  width: 100%;
-  height: auto;
-  flex: 50%;
-} */
 
 .content_wrapper_map{
   width: 100%;
