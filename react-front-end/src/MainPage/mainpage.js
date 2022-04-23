@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import PropertyTile from '../components/property/property-tile';
 import SimpleMap from '../simpleMaps';
-// const locations = require("../locations.json");
+
 
 export default function mainpage(){
 
